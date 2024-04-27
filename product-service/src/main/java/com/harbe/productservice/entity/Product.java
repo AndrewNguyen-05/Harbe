@@ -24,6 +24,8 @@ public class Product {
 
     private String name;
     private String brand;
+
+    @Column(length = 5000)
     private String description;
     private double price;
     private double discountRate;
