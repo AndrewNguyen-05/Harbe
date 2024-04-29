@@ -1,9 +1,9 @@
 package com.harbe.productservice.controller;
 
-import com.harbe.productservice.dto.message.ProductResponse;
+import com.harbe.commons.response.ObjectResponse;
+import com.harbe.commons.utils.AppConstants;
 import com.harbe.productservice.dto.model.ProductDto;
 import com.harbe.productservice.service.ProductService;
-import com.harbe.productservice.utils.AppConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,7 +37,7 @@ public class ProductController {
             description = "HTTP Status 200 OK"
     )
     @GetMapping
-    public ResponseEntity<ProductResponse> getAllProducts(
+    public ResponseEntity<ObjectResponse<ProductDto>> getAllProducts(
             @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
             @RequestParam(value = "sortBy", defaultValue = AppConstants.DEFAULT_SORT_BY, required = false) String sortBy,

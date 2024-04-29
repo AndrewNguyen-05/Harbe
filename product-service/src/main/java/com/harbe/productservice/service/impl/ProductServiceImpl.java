@@ -1,5 +1,6 @@
 package com.harbe.productservice.service.impl;
 
+import com.harbe.commons.response.ObjectResponse;
 import com.harbe.productservice.dto.mapper.OptionMapper;
 import com.harbe.productservice.dto.mapper.ProductMapper;
 import com.harbe.productservice.dto.mapper.SpecificationMapper;
@@ -75,7 +76,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponse getAllProducts(int pageNo, int pageSize, String sortBy, String sortDir) {
+    public ObjectResponse<ProductDto> getAllProducts(int pageNo, int pageSize, String sortBy, String sortDir) {
         // Tao sort
         Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
                 ? Sort.by(sortBy).ascending()
@@ -94,14 +95,14 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDto> content = products.stream().map(product -> productMapper.mapToDto(product)).collect(Collectors.toList());
 
         // Gan gia tri (content) cua page vao ProductResponse de tra ve
-        ProductResponse productResponse = new ProductResponse();
-        productResponse.setContent(content);
-        productResponse.setTotalElements(pages.getTotalElements());
-        productResponse.setPageNo(pages.getNumber());
-        productResponse.setPageSize(pages.getSize());
-        productResponse.setLast(pages.isLast());
+        ObjectResponse<ProductDto> response = new ObjectResponse();
+        response.setContent(content);
+        response.setTotalElements(pages.getTotalElements());
+        response.setPageNo(pages.getNumber());
+        response.setPageSize(pages.getSize());
+        response.setLast(pages.isLast());
 
-        return productResponse;
+        return response;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.harbe.authservice.dto;
+package com.harbe.authservice.dto.message;
 
 import java.util.Date;
 

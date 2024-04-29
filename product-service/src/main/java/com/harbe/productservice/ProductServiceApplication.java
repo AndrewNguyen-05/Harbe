@@ -16,18 +16,18 @@ import org.springframework.context.annotation.Bean;
 				description = "Product Service REST APIs Documentation",
 				version = "v1.0",
 				contact = @Contact(
-						name = "Andrew",
+						name = "Nguyen Van Hoang Anh",
 						email = "anhnguyen.052003@gmail.com",
-						url = "https://www.andrewnguyen.vn"
+						url = "https://github.com/AndrewNguyen-05"
 				),
 				license = @License(
 						name = "Apache 2.0",
-						url = "https://www.andrewnguyen.vn"
+						url = "https://github.com/AndrewNguyen-05"
 				)
 		),
 		externalDocs = @ExternalDocumentation(
 				description = "Product-Service Doc",
-				url = "https://www.andrewnguyen.vn"
+				url = "https://github.com/AndrewNguyen-05"
 		)
 )
 @SpringBootApplication

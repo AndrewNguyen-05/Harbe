@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -50,6 +51,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 @Configuration
 @RequiredArgsConstructor
 public class AuthorizationServerConfiguration {
@@ -87,7 +89,12 @@ public class AuthorizationServerConfiguration {
                         .requestMatchers( "/signup").permitAll()
                         .requestMatchers( "/register").permitAll()
                         .requestMatchers( "/users/**").permitAll()
+
+//                        .requestMatchers( HttpMethod.POST, "/users/**").permitAll()
+//                        .requestMatchers( HttpMethod.PUT, "/users/**").permitAll()
+//                        .requestMatchers( HttpMethod.DELETE, "/users/**").permitAll()
                         .anyRequest().authenticated()
+
                 )
                 .formLogin(Customizer.withDefaults())
                 .build();
@@ -128,23 +135,7 @@ public class AuthorizationServerConfiguration {
                     .claim("id", user.getId())
                     .claim("authorities", authorities);
         };
-//        return context -> {
-//            User user = (User) context.getPrincipal().getPrincipal();
-//            UserDetailsImpl userDetails = UserDetailsImpl.build(user);
-//
-//            Set<String> authorities = userDetails.getAuthorities().stream()
-//                    .map(GrantedAuthority::getAuthority)
-//                    .collect(Collectors.toSet());
-//
-//            // custom scope
-//            if (context.getAuthorizationGrantType().equals(OAuth2PasswordGrantAuthenticationConverter.PASSWORD)) {
-//                authorities.forEach(context.getAuthorizedScopes()::add);
-//            }
-//
-//            context.getClaims()
-//                    .claim("id", userDetails.getId())
-//                    .claim("authorities", authorities);
-//        };
+
     }
 
     @Bean

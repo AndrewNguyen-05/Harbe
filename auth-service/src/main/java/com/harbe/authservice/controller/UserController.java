@@ -1,15 +1,59 @@
 package com.harbe.authservice.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.harbe.authservice.dto.model.UserDto;
+import com.harbe.authservice.entity.User;
+import com.harbe.authservice.service.UserService;
+import com.harbe.commons.response.ObjectResponse;
+import com.harbe.commons.utils.AppConstants;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-
+@Tag(
+        name = "User",
+        description = "REST APIs for User"
+)
 @RestController
 @RequestMapping("/users")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserController {
+    private UserService userService;
+    @GetMapping("/create")
+    public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserDto userDto){
+        return new ResponseEntity<>(this.userService.createUser(userDto), HttpStatus.CREATED);
+    }
 
+    @GetMapping
+    public ResponseEntity<ObjectResponse<UserDto>> getAllUser(
+            @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = AppConstants.DEFAULT_SORT_BY, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = AppConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir
+    ){
+        return new ResponseEntity<>(this.userService.getAllUser(pageSize, pageNo, sortBy, sortDir), HttpStatus.OK);
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable(value = "userId") Long id){
+        return new ResponseEntity<>(this.userService.getUserById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/update/{userId}")
+    public ResponseEntity<UserDto> updateUser(
+            @PathVariable(value = "userId") Long id,
+            @RequestBody UserDto userDto){
+        return new ResponseEntity<>(this.userService.updateUser(userDto, id), HttpStatus.OK);
+    }
+
+    @GetMapping("/delete/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable(value = "userId") Long id){
+        this.userService.deleteUser(id);
+
+        return new ResponseEntity<>("Delete user successfully!", HttpStatus.OK);
+    }
 
 }
 

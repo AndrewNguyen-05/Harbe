@@ -1,6 +1,6 @@
 package com.harbe.authservice.exception;
 
-import com.harbe.authservice.dto.ErrorDetails;
+import com.harbe.authservice.dto.message.ErrorDetails;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

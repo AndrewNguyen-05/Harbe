@@ -72,9 +72,6 @@ public class SecurityConfig {
 
                         //Thao tac voi user, chi admin moi co quyen
                         .pathMatchers(HttpMethod.GET, "api/v1/users/**").hasAuthority("SCOPE_ADMIN")
-                        .pathMatchers(HttpMethod.POST, "api/v1/users/**").hasAuthority("SCOPE_ADMIN")
-                        .pathMatchers(HttpMethod.PUT, "api/v1/users/**").hasAuthority("SCOPE_ADMIN")
-                        .pathMatchers(HttpMethod.DELETE, "api/v1/users/**").hasAuthority("SCOPE_ADMIN")
 
                         //Them, xoa, sua product
                         .pathMatchers(HttpMethod.POST, "api/v1/products/**").hasAuthority("SCOPE_ADMIN")

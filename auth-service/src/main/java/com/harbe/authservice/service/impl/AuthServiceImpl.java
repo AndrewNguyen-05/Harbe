@@ -1,7 +1,7 @@
 package com.harbe.authservice.service.impl;
 
 import lombok.AllArgsConstructor;
-import com.harbe.authservice.dto.RegisterDto;
+import com.harbe.authservice.dto.message.RegisterDto;
 import com.harbe.authservice.entity.Role;
 import com.harbe.authservice.entity.User;
 import com.harbe.authservice.repository.RoleRepository;
