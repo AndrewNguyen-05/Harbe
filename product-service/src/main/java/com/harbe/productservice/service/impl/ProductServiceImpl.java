@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
         newProduct.setProductSlug(productSlug);
 
         // Gán các option vào product
-        Set<ProductOption> options = newProduct.getOptions();
+        List<ProductOption> options = newProduct.getOptions();
         for(ProductOption option : options){
             newProduct.addOption(option);
         }
@@ -90,6 +90,10 @@ public class ProductServiceImpl implements ProductService {
 
         // Lay ra gia tri (content) cua page
         List<Product> products = pages.getContent();
+
+        for(Product product : products){
+
+        }
 
         // Ep kieu sang dto
         List<ProductDto> content = products.stream().map(product -> productMapper.mapToDto(product)).collect(Collectors.toList());

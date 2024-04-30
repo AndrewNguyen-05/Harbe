@@ -1,5 +1,6 @@
 package com.harbe.productservice;
 
+import com.harbe.commons.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 @OpenAPIDefinition(
 		info = @Info(
@@ -30,6 +32,7 @@ import org.springframework.context.annotation.Bean;
 				url = "https://github.com/AndrewNguyen-05"
 		)
 )
+@Import(SecurityConfig.class)
 @SpringBootApplication
 public class ProductServiceApplication {
 

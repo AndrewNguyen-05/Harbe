@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -25,6 +26,8 @@ public class ProductOption {
     @Column(unique = false)
     private String name;
     private String value;
+//    @ElementCollection
+//    private List<String> value;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference

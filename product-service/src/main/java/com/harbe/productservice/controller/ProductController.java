@@ -63,4 +63,9 @@ public class ProductController {
         this.productService.deleteProduct(productId);
         return new ResponseEntity<>("Product is deleted successfully!", HttpStatus.OK);
     }
+
+    @GetMapping("/product-options/{optionId}")
+    public ResponseEntity<ProductDto> findProductByProductOptionId(@PathVariable(name = "optionId") Long optionId){
+        return new ResponseEntity<>();
+    }
 }
