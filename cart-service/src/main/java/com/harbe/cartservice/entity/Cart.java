@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.redis.core.RedisHash;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,17 +16,16 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity
-@Table(name = "carts")
-public class Cart {
+@RedisHash("cart")
+public class Cart implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long userId;
 
-    private Long total;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<CartItem> items = new HashSet<>();
+    private Long productItemId;
+    private Long productId;
+    private Long quantity;
 }

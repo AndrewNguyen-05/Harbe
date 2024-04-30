@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Schema(
@@ -40,6 +41,6 @@ public class ProductDto {
     private String productSlug;
     private String categoryUrl;
 
-    private Set<ProductOptionDto> options;
+    private List<ProductOptionDto> options;
     private Set<ProductSpecificationDto> specifications;
 }
