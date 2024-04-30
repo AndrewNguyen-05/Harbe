@@ -100,16 +100,7 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
                 .bodyToMono(ProductDto.class)
                 .block();
     }
-//    public Map<String, Integer> getProductFromCart(String userId) {
-//        Map<String, Object> products = this.getField("cart:user-" + userId);
-//        // WEB CLIENT
-//        ProductDto productDto = this.webClient.get()
-//                .uri("http://localhost:8081/api/v1/products/" + employee.getDepartmentCode())
-//                .retrieve()
-//                .bodyToMono(ProductDto.class)
-//                .block();
-//        return convertToIntegerValueMap(products);
-//    }
+
 
     private Map<String, Integer> convertToIntegerValueMap(Map<String, Object> map) {
         Map<String, Integer> result = new HashMap<>();

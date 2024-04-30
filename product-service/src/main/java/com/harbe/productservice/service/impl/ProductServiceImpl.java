@@ -3,9 +3,11 @@ package com.harbe.productservice.service.impl;
 import com.harbe.commons.response.ObjectResponse;
 import com.harbe.productservice.dto.mapper.OptionMapper;
 import com.harbe.productservice.dto.mapper.ProductMapper;
+import com.harbe.productservice.dto.mapper.ProductWithOptionMapper;
 import com.harbe.productservice.dto.mapper.SpecificationMapper;
 import com.harbe.productservice.dto.message.ProductResponse;
 import com.harbe.productservice.dto.model.ProductDto;
+import com.harbe.productservice.dto.response.ProductWithOptionDto;
 import com.harbe.productservice.entity.Category;
 import com.harbe.productservice.entity.Product;
 import com.harbe.productservice.entity.ProductOption;
@@ -22,6 +24,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -40,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
     private OptionMapper optionMapper;
     private SpecificationMapper specificationMapper;
+    private ProductWithOptionMapper productWithOptionMapper;
 
     @Override
     public ProductDto createProduct(ProductDto productDto) {
@@ -196,4 +200,13 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository.delete(product);
     }
 
+    @Override
+    public ProductWithOptionDto getProductByProductOptionId(long productOptionId){
+        ProductOption option = this.optionRepository.findById(productOptionId).orElseThrow(() -> new ResourceNotFoundException("Option", "id", productOptionId));
+
+        ProductWithOptionDto product = new ProductWithOptionDto();
+        product = this.productWithOptionMapper.mapToProductOptionDto(option.getProduct());
+        product.setOption(this.optionMapper.mapToDto(option));
+        return product;
+    }
 }

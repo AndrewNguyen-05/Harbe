@@ -3,6 +3,7 @@ package com.harbe.productservice.controller;
 import com.harbe.commons.response.ObjectResponse;
 import com.harbe.commons.utils.AppConstants;
 import com.harbe.productservice.dto.model.ProductDto;
+import com.harbe.productservice.dto.response.ProductWithOptionDto;
 import com.harbe.productservice.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -65,7 +66,7 @@ public class ProductController {
     }
 
     @GetMapping("/product-options/{optionId}")
-    public ResponseEntity<ProductDto> findProductByProductOptionId(@PathVariable(name = "optionId") Long optionId){
-        return new ResponseEntity<>();
+    public ResponseEntity<ProductWithOptionDto> findProductByProductOptionId(@PathVariable(name = "optionId") Long optionId){
+        return new ResponseEntity<>(this.productService.getProductByProductOptionId(optionId), HttpStatus.OK);
     }
 }
