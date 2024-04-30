@@ -75,27 +75,43 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
 
         List<ProductDto> productList = new ArrayList<>();
         for (Map.Entry<String, Object> entry : products.entrySet()) {
-            String key = entry.getKey();
-            String productId = extractProductId(key); // Tách id từ key
+            // Tao 1 bien co hieu de danh dau xem id nay la cua product hay product_item
+            boolean isProductItem = false;
 
-            ProductDto productDto = getProductById(productId); // Gọi đến URL để lấy thông tin sản phẩm
+            //Dau tien la lay key ra roi sau do split bang dau ":"
+            //vi dinh dang du lieu se la product:1 hoac product_item:1 (dua tren san pham do co option hay ko)
+            String[] arrKey = entry.getKey().split(":");
+
+            //Neu la product thi bien co hieu la false, nguoc lai la true
+            isProductItem = arrKey[0].equals("product_item");
+
+            ProductDto productDto = getProductById(arrKey[1], isProductItem); // Gọi đến URL để lấy thông tin sản phẩm dua tren id
             if (productDto != null) {
                 productList.add(productDto);
             }
         }
         return productList;
     }
-    private String extractProductId(String key) {
-        return key.substring("product:".length());
-    }
 
-    private ProductDto getProductById(String productId) {
-        // Gọi đến URL sử dụng WebClient để lấy thông tin sản phẩm từ productId
-        return this.webClient.get()
-                .uri("http://localhost:8081/api/v1/products/" + productId)
-                .retrieve()
-                .bodyToMono(ProductDto.class)
-                .block();
+    private ProductDto getProductById(String id, boolean isProductItem) {
+        // Kiem tra, neu la product_item thi goi toi duong dan lay product dua tren optionId,
+        // nguoc lai se la goi product theo id nhu bth
+        ProductDto productDto;
+        if(isProductItem){
+            productDto = this.webClient.get()
+                    .uri("http://localhost:8081/api/v1/products/product-options/" + id)
+                    .retrieve()
+                    .bodyToMono(ProductDto.class)
+                    .block();
+        } else {
+            productDto = this.webClient.get()
+                    .uri("http://localhost:8081/api/v1/products/" + id)
+                    .retrieve()
+                    .bodyToMono(ProductDto.class)
+                    .block();
+        }
+
+        return productDto;
     }
 
 
