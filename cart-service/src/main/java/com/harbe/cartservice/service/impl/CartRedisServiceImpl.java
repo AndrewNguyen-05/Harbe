@@ -3,11 +3,8 @@ package com.harbe.cartservice.service.impl;
 import com.harbe.cartservice.dto.Request.CartItemRequest;
 import com.harbe.cartservice.dto.Request.ProductCartDeletionRequest;
 import com.harbe.cartservice.dto.model.ProductDto;
-import com.harbe.cartservice.entity.Cart;
 import com.harbe.cartservice.service.CartRedisService;
 import com.harbe.cartservice.service.base.impl.BaseRedisServiceImpl;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -99,27 +96,6 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
                 .retrieve()
                 .bodyToMono(ProductDto.class)
                 .block();
-    }
-
-
-    private Map<String, Integer> convertToIntegerValueMap(Map<String, Object> map) {
-        Map<String, Integer> result = new HashMap<>();
-        for (Map.Entry<String, Object> entry : map.entrySet()) {
-            Object value = entry.getValue();
-            if (value instanceof Integer) {
-                result.put(entry.getKey(), (Integer) value);
-            } else {
-                // Xử lý trường hợp nếu giá trị không phải kiểu Integer, ví dụ như String
-                try {
-                    int intValue = Integer.parseInt(value.toString());
-                    result.put(entry.getKey(), intValue);
-                } catch (NumberFormatException e) {
-                    // Xử lý nếu không thể chuyển đổi giá trị thành Integer
-                    // Có thể bỏ qua hoặc thêm vào log lỗi tùy theo yêu cầu của bạn
-                }
-            }
-        }
-        return result;
     }
 
 
