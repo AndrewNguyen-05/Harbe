@@ -23,42 +23,35 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
     }
 
     @Override
-    public void addProductToCart(String userId, List<CartItemRequest> items) {
+    public void addProductToCart(String userId, CartItemRequest item) {
         String key = "cart:user-" + userId;
         String fieldKey;
         int updateQuantity;
-        for(CartItemRequest item : items){
 
-            if(Objects.nonNull(item.getProductItemId())){
-                fieldKey = "product_item:" + item.getProductItemId();
-            } else {
-                fieldKey = "product:" + item.getProductId();
-            }
-
-            if (this.hashExist(userId, fieldKey)) {
-                updateQuantity = (Integer) this.hashGet(userId, fieldKey) + item.getQuantity();
-            } else {
-                updateQuantity = item.getQuantity();
-            }
-
-            this.hashSet(key, fieldKey, updateQuantity);
+        if(Objects.nonNull(item.getProductItemId())){
+            fieldKey = "product_item:" + item.getProductItemId();
+        } else {
+            fieldKey = "product:" + item.getProductId();
         }
+
+        if (this.hashExist(userId, fieldKey)) {
+            updateQuantity = (Integer) this.hashGet(userId, fieldKey) + item.getQuantity();
+        } else {
+            updateQuantity = item.getQuantity();
+        }
+
+        this.hashSet(key, fieldKey, updateQuantity);
     }
 
     @Override
-    public void updateProductInCart(String userId, List<CartItemRequest> items) {
+    public void updateProductInCart(String userId, CartItemRequest item) {
         String key = "cart:user-" + userId;
         String fieldKey;
-        Set<String> fieldKeys = new HashSet<>();
-        for(CartItemRequest item : items){
-            fieldKey = Objects.nonNull(item.getProductItemId()) ?
-                    "product_item:" + item.getProductItemId() : "product:" + item.getProductId();
-            fieldKeys.add(fieldKey);
 
-            this.hashSet(key, fieldKey, item.getQuantity());
-        }
+        fieldKey = Objects.nonNull(item.getProductItemId()) ?
+                "product_item:" + item.getProductItemId() : "product:" + item.getProductId();
 
-        //this.delete(userId, fieldKeys);
+        this.hashSet(key, fieldKey, item.getQuantity());
     }
 
     @Override
@@ -76,7 +69,7 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
         List<ProductDto> productList = new ArrayList<>();
         for (Map.Entry<String, Object> entry : products.entrySet()) {
             // Tao 1 bien co hieu de danh dau xem id nay la cua product hay product_item
-            boolean isProductItem = false;
+            boolean isProductItem;
 
             //Dau tien la lay key ra roi sau do split bang dau ":"
             //vi dinh dang du lieu se la product:1 hoac product_item:1 (dua tren san pham do co option hay ko)

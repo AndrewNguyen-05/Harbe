@@ -1,8 +1,6 @@
 package com.harbe.cartservice.service.base.impl;
 
 import com.harbe.cartservice.service.base.BaseRedisService;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -36,6 +34,11 @@ public class BaseRedisServiceImpl implements BaseRedisService {
     @Override
     public void hashSet(String key, String field, Object value) {
         hashOperations.put(key, field, value);
+    }
+
+    @Override
+    public void hashIncrBy(String key, String field, long delta){
+        this.hashOperations.increment(key, field, delta);
     }
 
     @Override
