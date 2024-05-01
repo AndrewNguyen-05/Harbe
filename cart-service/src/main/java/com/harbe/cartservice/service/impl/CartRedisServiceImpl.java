@@ -2,9 +2,11 @@ package com.harbe.cartservice.service.impl;
 
 import com.harbe.cartservice.dto.Request.CartItemRequest;
 import com.harbe.cartservice.dto.Request.ProductCartDeletionRequest;
+import com.harbe.cartservice.dto.Request.UpdateCartRequest;
 import com.harbe.cartservice.dto.model.ProductDto;
 import com.harbe.cartservice.service.CartRedisService;
 import com.harbe.cartservice.service.base.impl.BaseRedisServiceImpl;
+import com.harbe.commons.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -44,21 +46,25 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
     }
 
     @Override
-    public void updateProductInCart(String userId, CartItemRequest item) {
+    public void updateProductInCart(String userId, UpdateCartRequest item) {
         String key = "cart:user-" + userId;
         String fieldKey;
+        long delta = item.getDelta();
 
         fieldKey = Objects.nonNull(item.getProductItemId()) ?
                 "product_item:" + item.getProductItemId() : "product:" + item.getProductId();
 
-        this.hashSet(key, fieldKey, item.getQuantity());
+        this.hashIncrBy(key, fieldKey, delta);
     }
 
     @Override
     public void deleteProductInCart(String userId, ProductCartDeletionRequest request) {
         if(Objects.nonNull(request.getProductItemId())){
-
-
+            this.checkFieldKeyExist("cart:user-" + userId, "product_item:" + request.getProductItemId());
+            this.delete("cart:user-" + userId, "product_item:" + request.getProductItemId());
+        } else {
+            this.checkFieldKeyExist("cart:user-" + userId, "product:" + request.getProductId());
+            this.delete("cart:user-" + userId, "product:" + request.getProductId());
         }
     }
 
@@ -107,5 +113,11 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
         return productDto;
     }
 
+
+    private void checkFieldKeyExist(String key, String keyField){
+        if(!this.hashExist(key, keyField)){
+            throw new ResourceNotFoundException(key, keyField, 0);
+        }
+    }
 
 }
