@@ -2,7 +2,7 @@ package com.harbe.productservice.service;
 
 import com.harbe.commons.response.ObjectResponse;
 import com.harbe.productservice.dto.model.ProductDto;
-import com.harbe.productservice.dto.response.ProductWithOptionDto;
+import com.harbe.productservice.dto.response.ProductWithOptionForCartDto;
 
 public interface ProductService {
     ProductDto createProduct(ProductDto productDto);
@@ -11,5 +11,5 @@ public interface ProductService {
     ProductDto updateProduct(ProductDto productDto, Long productId);
     void deleteProduct(Long productId);
 
-    ProductWithOptionDto getProductByProductOptionId(long productOptionId);
+    ProductWithOptionForCartDto getProductByProductOptionId(String productOptionId);
 }

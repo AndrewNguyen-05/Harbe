@@ -37,8 +37,8 @@ public class BaseRedisServiceImpl implements BaseRedisService {
     }
 
     @Override
-    public void hashIncrBy(String key, String field, long delta){
-        this.hashOperations.increment(key, field, delta);
+    public Long hashIncrBy(String key, String field, long delta){
+        return this.hashOperations.increment(key, field, delta);
     }
 
     @Override

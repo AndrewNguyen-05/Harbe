@@ -27,14 +27,33 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
     @Override
     public void addProductToCart(String userId, CartItemRequest item) {
         String key = "cart:user-" + userId;
-        String fieldKey;
+
+        // Tao 1 stringbuilder de noi chuoi voi hieu nang tot hon la cong string
+        StringBuilder fieldKeyBuilder = new StringBuilder("product_item:");
+
         int updateQuantity;
 
+        // Kiem tra xem product co option ko
         if(Objects.nonNull(item.getProductItemId())){
-            fieldKey = "product_item:" + item.getProductItemId();
+
+            // Bien boolean de chi ra phan tu dau tien, khong can them dau "," phia truoc
+            // Ham for dung de ghep cac optionId lai thanh 1 chuoi co dang "5,10,12"
+            boolean isFirst = true;
+            for (Long optionId : item.getProductItemId()) {
+                if (!isFirst) {
+                    fieldKeyBuilder.append(",");
+                } else {
+                    isFirst = false;
+                }
+                fieldKeyBuilder.append(optionId);
+            }
+
         } else {
-            fieldKey = "product:" + item.getProductId();
+            fieldKeyBuilder.append(item.getProductId());
         }
+
+        // Ep kieu ve lai String de thao tac
+        String fieldKey = fieldKeyBuilder.toString();
 
         if (this.hashExist(userId, fieldKey)) {
             updateQuantity = (Integer) this.hashGet(userId, fieldKey) + item.getQuantity();
@@ -51,17 +70,53 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
         String fieldKey;
         long delta = item.getDelta();
 
-        fieldKey = Objects.nonNull(item.getProductItemId()) ?
-                "product_item:" + item.getProductItemId() : "product:" + item.getProductId();
+        if(Objects.nonNull(item.getProductItemId())){
+            // Tao 1 stringBuilder de noi chuoi
+            StringBuilder fieldKeyBuilder = new StringBuilder("product_item:");
 
-        this.hashIncrBy(key, fieldKey, delta);
+            // logic xu ly tuong tu voi vong for trong ham addToCart
+            boolean isFirst = true;
+            for(Long optionId : item.getProductItemId()){
+                if (!isFirst) {
+                    fieldKeyBuilder.append(",");
+                } else {
+                    isFirst = false;
+                }
+                fieldKeyBuilder.append(optionId);
+            }
+
+            fieldKey = fieldKeyBuilder.toString();
+
+        } else {
+            fieldKey = "product:" + item.getProductId();
+        }
+
+        Long quantityLeft = this.hashIncrBy(key, fieldKey, delta);
+
+        if(quantityLeft <= 0){
+            this.delete(key, fieldKey);
+        }
     }
 
     @Override
     public void deleteProductInCart(String userId, ProductCartDeletionRequest request) {
         if(Objects.nonNull(request.getProductItemId())){
-            this.checkFieldKeyExist("cart:user-" + userId, "product_item:" + request.getProductItemId());
-            this.delete("cart:user-" + userId, "product_item:" + request.getProductItemId());
+            // Tao 1 stringBuilder de noi chuoi
+            StringBuilder fieldKeyBuilder = new StringBuilder("product_item:");
+
+            // logic xu ly tuong tu voi vong for trong ham addToCart
+            boolean isFirst = true;
+            for(Long optionId : request.getProductItemId()){
+                if (!isFirst) {
+                    fieldKeyBuilder.append(",");
+                } else {
+                    isFirst = false;
+                }
+                fieldKeyBuilder.append(optionId);
+            }
+
+            this.checkFieldKeyExist("cart:user-" + userId, fieldKeyBuilder.toString());
+            this.delete("cart:user-" + userId,  fieldKeyBuilder.toString());
         } else {
             this.checkFieldKeyExist("cart:user-" + userId, "product:" + request.getProductId());
             this.delete("cart:user-" + userId, "product:" + request.getProductId());
@@ -97,8 +152,12 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
         // nguoc lai se la goi product theo id nhu bth
         ProductDto productDto;
         if(isProductItem){
-            productDto = this.webClient.get()
-                    .uri("http://localhost:8081/api/v1/products/product-options/" + id)
+
+            // Web service la POST vi phai gui body request, body request o day la 1 chuoi cac productItemId
+            // co dang "5,10,12"
+            productDto = this.webClient.post()
+                    .uri("http://localhost:8081/api/v1/products/product-options")
+                    .bodyValue(id)
                     .retrieve()
                     .bodyToMono(ProductDto.class)
                     .block();

@@ -11,7 +11,7 @@ public interface BaseRedisService {
 
     void hashSet(String key, String field, Object value);
 
-    void hashIncrBy(String key, String field, long delta);
+    Long hashIncrBy(String key, String field, long delta);
     boolean hashExist(String key, String field);
 
     Object get(String key);

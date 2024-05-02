@@ -1,18 +1,19 @@
 package com.harbe.productservice.service.impl;
 
+import com.harbe.commons.exception.HarbeAPIException;
+import com.harbe.commons.exception.ResourceNotFoundException;
 import com.harbe.commons.response.ObjectResponse;
 import com.harbe.productservice.dto.mapper.OptionMapper;
 import com.harbe.productservice.dto.mapper.ProductMapper;
-import com.harbe.productservice.dto.mapper.ProductWithOptionMapper;
+import com.harbe.productservice.dto.mapper.ProductWithOptionForCartMapper;
 import com.harbe.productservice.dto.mapper.SpecificationMapper;
-import com.harbe.productservice.dto.message.ProductResponse;
 import com.harbe.productservice.dto.model.ProductDto;
-import com.harbe.productservice.dto.response.ProductWithOptionDto;
+import com.harbe.productservice.dto.model.ProductOptionDto;
+import com.harbe.productservice.dto.response.ProductWithOptionForCartDto;
 import com.harbe.productservice.entity.Category;
 import com.harbe.productservice.entity.Product;
 import com.harbe.productservice.entity.ProductOption;
 import com.harbe.productservice.entity.ProductSpecification;
-import com.harbe.productservice.exception.ResourceNotFoundException;
 import com.harbe.productservice.repository.CategoryRepository;
 import com.harbe.productservice.repository.ProductOptionRepository;
 import com.harbe.productservice.repository.ProductRepository;
@@ -24,7 +25,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
     private OptionMapper optionMapper;
     private SpecificationMapper specificationMapper;
-    private ProductWithOptionMapper productWithOptionMapper;
+    private ProductWithOptionForCartMapper productWithOptionMapper;
 
     @Override
     public ProductDto createProduct(ProductDto productDto) {
@@ -201,12 +201,23 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductWithOptionDto getProductByProductOptionId(long productOptionId){
-        ProductOption option = this.optionRepository.findById(productOptionId).orElseThrow(() -> new ResourceNotFoundException("Option", "id", productOptionId));
+    public ProductWithOptionForCartDto getProductByProductOptionId(String productOptionIds){
 
-        ProductWithOptionDto product = new ProductWithOptionDto();
-        product = this.productWithOptionMapper.mapToProductOptionDto(option.getProduct());
-        product.setOption(this.optionMapper.mapToDto(option));
-        return product;
+        String[] ids = productOptionIds.split(",");
+
+        ProductOption firstOption = this.optionRepository.findById(Long.valueOf(ids[0]).longValue()).get();
+        Product product = firstOption.getProduct();
+
+        List<ProductOptionDto> optionDtoList = new ArrayList<>();
+
+        for(String productOptionId : ids){
+            ProductOptionDto option = optionMapper.mapToDto(this.optionRepository.findById(Long.valueOf(productOptionId).longValue()).get());
+            optionDtoList.add(option);
+        }
+
+        ProductWithOptionForCartDto productWithOptionForCartDto;
+        productWithOptionForCartDto = this.productWithOptionMapper.mapToProductOptionDto(product);
+        productWithOptionForCartDto.setOption(optionDtoList);
+        return productWithOptionForCartDto;
     }
 }
