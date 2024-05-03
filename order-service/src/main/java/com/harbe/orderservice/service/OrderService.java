@@ -4,7 +4,7 @@ import com.harbe.orderservice.dto.dataObject.ListOrderDto;
 import com.harbe.orderservice.dto.dataObject.OrderDto;
 
 public interface OrderService {
-    OrderDto createOrder(String userId);
+    OrderDto createOrder(long userId);
     ListOrderDto getAllOrder(int pageNo, int pageSize, String sortBy, String sortDir);
     OrderDto getOrderById(long id);
     OrderDto updateOrder(OrderDto orderDto, long id);

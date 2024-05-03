@@ -2,8 +2,12 @@ package com.harbe.orderservice.dto.mapper;
 
 import com.harbe.orderservice.dto.dataObject.OrderDto;
 import com.harbe.orderservice.entity.Order;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
+@AllArgsConstructor
 public class OrderMapper {
 
     private ModelMapper mapper;
