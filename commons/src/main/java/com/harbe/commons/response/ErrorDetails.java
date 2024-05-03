@@ -1,4 +1,4 @@
-package com.harbe.productservice.dto.message;
+package com.harbe.commons.response;
 
 import java.util.Date;
 

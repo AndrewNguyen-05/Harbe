@@ -2,6 +2,8 @@ package com.harbe.cartservice.dto.model;
 
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 public class ProductDto {
@@ -10,6 +12,6 @@ public class ProductDto {
     private double price;
     private double discountRate;
     private String thumbnailUrl;
-    private ProductOptionDto option;
+    private List<ProductOptionDto> option;
 }
 

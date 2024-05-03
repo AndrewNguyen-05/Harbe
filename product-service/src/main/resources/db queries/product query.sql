@@ -135,7 +135,7 @@ Asus Tuf Gaming F15 FX507ZC4-HN074W thuộc phân khúc laptop 20 triệu đư�
 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_2__3_24.png'),
 (8, 
 'Laptop Lenovo Ideapad 3 15IAU7 i7 1255U/16GB/512GB/15.6"FHD/Win 11',
-'Laptop-Lenovo-Ideapad-3-15IAU7-i7-1255U/16GB/512GB/15.6"FHD/Win-11' ,
+'Laptop-Lenovo-Ideapad-3-15IAU7-i7-1255U-16GB-512GB-15.6"FHD-Win-11' ,
 'Lenovo', 
 'Đặc điểm nổi bật của Lenovo Ideapad 3 15IAU7 i7 1255U (82RK00W4VN)
 Lenovo IdeaPad 3 15IAU7 là phương tiện học tập và làm việc hoàn hảo dành cho bạn nhờ cấu hình cực mạnh trong tầm giá phải chăng. Bộ vi xử lý Intel Core i7 thế hệ thứ 12 mạnh mẽ, dung lượng RAM lớn 16GB, màn hình 15,6 inch Full HD rõ nét giúp mọi việc của bạn thoải mái và nhanh chóng hơn bao giờ hết.
@@ -159,7 +159,7 @@ Tính năng trí tuệ nhân tạo AI Engine của Lenovo IdeaPad 3i Gen 7 đem 
 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_4__5_29.png'),
 (9, 
 'MacBook Air 13 inch M2 2022 8CPU 8GPU 8GB/256GB',
-'MacBook-Air-13-inch-M2-2022-8CPU-8GPU-8GB/256GB',
+'MacBook-Air-13-inch-M2-2022-8CPU-8GPU-8GB-256GB',
 'Apple', 
 'Không chỉ khơi gợi cảm hứng qua việc cách tân thiết kế, MacBook Air M2 2022 còn chứa đựng nguồn sức mạnh lớn lao với chip M2 siêu mạnh, thời lượng pin chạm  ngưỡng 18 giờ, màn hình Liquid Retina tuyệt đẹp và hệ thống camera kết hợp cùng âm thanh tân tiến.
 Mỏng, nhẹ và tràn đầy cảm hứng
@@ -198,7 +198,7 @@ USB-C đang là tương lai của công nghiệp kết nối hiện nay, khi h�
 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_117_1.png'),
 (11,
 	'Màn hình AOC 22B2HN/74 (21.5inch/FHD/VA/75Hz/7ms/250nits/HDMI+VGA)',
-	'Màn-hình-AOC-22B2HN/74-(21.5inch/FHD/VA/75Hz/7ms/250nits/HDMI+VGA)',
+	'Màn-hình-AOC-22B2HN-74-(21.5inch-FHD-VA-75Hz-7ms-250nits-HDMI+VGA)',
 	'AOC',
 	'Mô tả sản phẩm
 AOC 22B2HN mang lại trải nghiệm chất lượng cao đơn giản, lý tưởng cho cả người dùng văn phòng hiện đại và người dùng gia đình.

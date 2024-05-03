@@ -1,17 +1,16 @@
 package com.harbe.cartservice.dto.Request;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class ProductCartDeletionRequest {
+@RequiredArgsConstructor
+public class UpdateCartRequest {
     private List<Long> productItemId;
     private Long productId;
+    private long delta;
 }
