@@ -3,6 +3,7 @@ package com.harbe.authservice.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import com.harbe.authservice.dto.message.RegisterDto;
 import com.harbe.authservice.service.AuthService;
@@ -33,7 +34,7 @@ public class AuthController {
             description = "HTTP Status 200 OK"
     )
     @PostMapping (value = {"/register", "/signup"})
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto){
+    public ResponseEntity<String> register(@RequestBody @Valid RegisterDto registerDto){
         return new ResponseEntity<>(this.authService.register(registerDto), HttpStatus.CREATED);
     }
 
