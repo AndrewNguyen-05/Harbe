@@ -65,8 +65,8 @@ public class SecurityConfig {
                 .authorizeExchange(auth -> auth
                         .pathMatchers("/actuator/**").permitAll()
                         .pathMatchers(HttpMethod.POST, "api/oauth2/v1/token").permitAll()
-                        .pathMatchers(HttpMethod.GET, "api/v1/auth/signup").permitAll()
-                        .pathMatchers(HttpMethod.GET, "api/v1/auth/register").permitAll()
+                        .pathMatchers(HttpMethod.POST, "api/v1/auth/signup").permitAll()
+                        .pathMatchers(HttpMethod.POST, "api/v1/auth/register").permitAll()
                         .pathMatchers(HttpMethod.GET, "api/v1/products/**").permitAll()
                         .pathMatchers(HttpMethod.GET, "api/v1/categories/**").permitAll()
 

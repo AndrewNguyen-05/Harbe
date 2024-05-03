@@ -3,6 +3,7 @@ package com.harbe.authservice.controller;
 import com.harbe.authservice.dto.model.AddressDto;
 import com.harbe.authservice.service.AddressService;
 import com.harbe.commons.utils.CustomHeaders;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +11,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(
+        name = "Address",
+        description = "REST APIs for Address"
+)
 @RestController
 @RequestMapping("/address")
 @AllArgsConstructor
 public class AddressController {
     AddressService addressService;
 
-    @GetMapping("/create")
+    @PostMapping
     public ResponseEntity<AddressDto> createAddress(@RequestHeader(CustomHeaders.X_AUTH_USER_ID) long userId,
                                                     @RequestBody AddressDto addressDto){
         return new ResponseEntity<>(addressService.createAddress(userId, addressDto), HttpStatus.CREATED);

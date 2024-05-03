@@ -32,7 +32,7 @@ public class AuthController {
             responseCode = "200",
             description = "HTTP Status 200 OK"
     )
-    @GetMapping (value = {"/register", "/signup"})
+    @PostMapping (value = {"/register", "/signup"})
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto){
         return new ResponseEntity<>(this.authService.register(registerDto), HttpStatus.CREATED);
     }

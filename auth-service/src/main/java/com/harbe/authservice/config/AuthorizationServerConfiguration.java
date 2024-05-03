@@ -84,12 +84,11 @@ public class AuthorizationServerConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
                         .requestMatchers("/actuator/**").permitAll()
-                        .requestMatchers( "/signup").permitAll()
-                        .requestMatchers( "/register").permitAll()
-                        .requestMatchers( "/users/**").permitAll()
-                        .requestMatchers("/address/**").permitAll()
+                        .requestMatchers("/signup", "/register", "/users/**", "/address/**").permitAll()
+
                         .anyRequest().authenticated()
 
                 )

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UserController {
     private UserService userService;
-    @GetMapping("/create")
+    @PostMapping
     public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserDto userDto){
         return new ResponseEntity<>(this.userService.createUser(userDto), HttpStatus.CREATED);
     }
@@ -41,14 +41,14 @@ public class UserController {
         return new ResponseEntity<>(this.userService.getUserById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/update/{userId}")
+    @PutMapping("/{userId}")
     public ResponseEntity<UserDto> updateUser(
             @PathVariable(value = "userId") Long id,
             @RequestBody UserDto userDto){
         return new ResponseEntity<>(this.userService.updateUser(userDto, id), HttpStatus.OK);
     }
 
-    @GetMapping("/delete/{userId}")
+    @DeleteMapping("/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable(value = "userId") Long id){
         this.userService.deleteUser(id);
 
