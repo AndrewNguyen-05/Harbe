@@ -15,19 +15,19 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "order")
+@Table(name = "\"order\"")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    double total;
-    String status;
-    String paymentMethod;
-    String paymentStatus;
-    double shippingFee;
-    String note;
-    LocalDateTime createdAt;
-    Address address;
+    private long id;
+    private double total;
+    private String status;
+    private String paymentMethod;
+    private String paymentStatus;
+    private double shippingFee;
+    private String note;
+    private LocalDateTime createdAt;
+    private long userId;
 
 }
