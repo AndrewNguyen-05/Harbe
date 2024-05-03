@@ -16,7 +16,7 @@ import java.util.List;
 public class AddressController {
     AddressService addressService;
 
-    @PostMapping
+    @GetMapping("/create")
     public ResponseEntity<AddressDto> createAddress(@RequestHeader(CustomHeaders.X_AUTH_USER_ID) long userId,
                                                     @RequestBody AddressDto addressDto){
         return new ResponseEntity<>(addressService.createAddress(userId, addressDto), HttpStatus.CREATED);

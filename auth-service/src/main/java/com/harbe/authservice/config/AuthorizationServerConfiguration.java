@@ -89,10 +89,7 @@ public class AuthorizationServerConfiguration {
                         .requestMatchers( "/signup").permitAll()
                         .requestMatchers( "/register").permitAll()
                         .requestMatchers( "/users/**").permitAll()
-
-//                        .requestMatchers( HttpMethod.POST, "/users/**").permitAll()
-//                        .requestMatchers( HttpMethod.PUT, "/users/**").permitAll()
-//                        .requestMatchers( HttpMethod.DELETE, "/users/**").permitAll()
+                        .requestMatchers("/address/**").permitAll()
                         .anyRequest().authenticated()
 
                 )
