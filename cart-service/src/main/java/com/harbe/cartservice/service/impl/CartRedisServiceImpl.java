@@ -1,8 +1,8 @@
 package com.harbe.cartservice.service.impl;
 
-import com.harbe.cartservice.dto.Request.CartItemRequest;
-import com.harbe.cartservice.dto.Request.ProductCartDeletionRequest;
-import com.harbe.cartservice.dto.Request.UpdateCartRequest;
+import com.harbe.cartservice.dto.request.CartItemRequest;
+import com.harbe.cartservice.dto.request.ProductCartDeletionRequest;
+import com.harbe.cartservice.dto.request.UpdateCartRequest;
 import com.harbe.cartservice.dto.model.ProductDto;
 import com.harbe.cartservice.service.CartRedisService;
 import com.harbe.cartservice.service.base.impl.BaseRedisServiceImpl;
@@ -125,7 +125,8 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
 
     @Override
     public List<ProductDto> getProductsFromCart(String userId) {
-        Map<String, Object> products = this.getField("cart:user-" + userId);
+        String key = "cart:user-" + userId;
+        Map<String, Object> products = this.getField(key);
 
         List<ProductDto> productList = new ArrayList<>();
         for (Map.Entry<String, Object> entry : products.entrySet()) {
@@ -140,7 +141,11 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
             isProductItem = arrKey[0].equals("product_item");
 
             ProductDto productDto = getProductById(arrKey[1], isProductItem); // Gọi đến URL để lấy thông tin sản phẩm dua tren id
+
             if (productDto != null) {
+                //Su dung lenh hget cart:user-1 product:1 de lay len so luong sp trong gio hang
+                int quantity = (int)this.hashGet(key, entry.getKey());
+                productDto.setQuantity(quantity);
                 productList.add(productDto);
             }
         }

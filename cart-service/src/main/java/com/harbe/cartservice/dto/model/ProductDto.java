@@ -13,5 +13,6 @@ public class ProductDto {
     private double discountRate;
     private String thumbnailUrl;
     private List<ProductOptionDto> option;
+    private int quantity;
 }
 

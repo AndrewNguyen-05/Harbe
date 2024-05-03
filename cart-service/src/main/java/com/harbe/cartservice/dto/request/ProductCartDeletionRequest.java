@@ -1,4 +1,4 @@
-package com.harbe.cartservice.dto.Request;
+package com.harbe.cartservice.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

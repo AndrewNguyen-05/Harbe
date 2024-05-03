@@ -1,8 +1,8 @@
 package com.harbe.cartservice.controller;
 
-import com.harbe.cartservice.dto.Request.CartItemRequest;
-import com.harbe.cartservice.dto.Request.ProductCartDeletionRequest;
-import com.harbe.cartservice.dto.Request.UpdateCartRequest;
+import com.harbe.cartservice.dto.request.CartItemRequest;
+import com.harbe.cartservice.dto.request.ProductCartDeletionRequest;
+import com.harbe.cartservice.dto.request.UpdateCartRequest;
 import com.harbe.cartservice.dto.model.ProductDto;
 import com.harbe.cartservice.service.CartRedisService;
 import com.harbe.commons.utils.CustomHeaders;
