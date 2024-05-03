@@ -23,14 +23,16 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDto createOrder(long userId) {
         List<ProductDto> listProductInCart = webClient.get()
-                .uri("https://localhost:8082/api/v1/carts")
-                .header(CustomHeaders.X_AUTH_USER_ID, String.valueOf(userId)).retrieve()
+                .uri("http://localhost:8082/api/v1/carts")
+                .header(CustomHeaders.X_AUTH_USER_ID, String.valueOf(userId))
+                .retrieve()
                 .bodyToFlux(ProductDto.class)
                 .collectList().block();
 
         AddressDto addressDto = webClient.get()
-                .uri("https://localhost:8181/api/v1/address")
-                .header(CustomHeaders.X_AUTH_USER_ID, String.valueOf(userId)).retrieve()
+                .uri("http://localhost:8181/api/v1/address")
+                .header(CustomHeaders.X_AUTH_USER_ID, String.valueOf(userId))
+                .retrieve()
                 .bodyToMono(AddressDto.class).block();
 
         System.out.println(listProductInCart);
