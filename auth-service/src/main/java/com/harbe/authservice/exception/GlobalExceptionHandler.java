@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.harbe.commons.exception.HarbeAPIException;
-import com.harbe.commons.exception.ResourceNotFoundException;
 
 import java.util.Date;
 import java.util.HashMap;

@@ -90,6 +90,10 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -102,11 +106,11 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.harbe</groupId>
-            <artifactId>commons</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.harbe</groupId>-->
+<!--            <artifactId>commons</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <dependencyManagement>

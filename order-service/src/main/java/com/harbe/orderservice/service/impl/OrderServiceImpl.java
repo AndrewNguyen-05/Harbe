@@ -6,7 +6,7 @@ import com.harbe.orderservice.dto.response.ProductDto;
 import com.harbe.orderservice.repository.OrderRepository;
 import com.harbe.orderservice.service.OrderService;
 import org.springframework.web.reactive.function.client.WebClient;
-import com.harbe.commons.utils.CustomHeaders;
+import com.harbe.orderservice.utils.CustomHeaders;
 
 import java.util.List;
 

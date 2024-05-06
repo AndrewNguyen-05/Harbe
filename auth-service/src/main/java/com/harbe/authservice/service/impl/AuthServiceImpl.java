@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.harbe.commons.exception.HarbeAPIException;
+import com.harbe.authservice.exception.HarbeAPIException;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package com.harbe.productservice.utils;
+package com.harbe.cartservice.utils;
 
 public interface CustomHeaders {
     String X_AUTH_USER_ID = "X-Auth-User-Id";

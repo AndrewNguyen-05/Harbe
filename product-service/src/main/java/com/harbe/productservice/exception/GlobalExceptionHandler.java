@@ -1,8 +1,6 @@
 package com.harbe.productservice.exception;
 
-import com.harbe.commons.exception.HarbeAPIException;
-import com.harbe.commons.exception.ResourceNotFoundException;
-import com.harbe.commons.response.ErrorDetails;
+import com.harbe.productservice.dto.response.ErrorDetails;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

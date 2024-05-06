@@ -1,7 +1,6 @@
 package com.harbe.authservice.security;
 
 import lombok.RequiredArgsConstructor;
-import com.harbe.commons.security.UserDetailsImpl;
 import com.harbe.authservice.entity.User;
 import com.harbe.authservice.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;

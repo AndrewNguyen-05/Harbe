@@ -1,6 +1,6 @@
 package com.harbe.productservice;
 
-import com.harbe.commons.security.SecurityConfig;
+import com.harbe.productservice.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;

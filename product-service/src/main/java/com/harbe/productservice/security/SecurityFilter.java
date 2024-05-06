@@ -1,6 +1,6 @@
-package com.harbe.commons.security;
+package com.harbe.productservice.security;
 
-import com.harbe.commons.utils.CustomHeaders;
+import com.harbe.productservice.utils.CustomHeaders;
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.harbe.commons.exception;
+package com.harbe.productservice.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;

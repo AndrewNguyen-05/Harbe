@@ -2,7 +2,7 @@ package com.harbe.authservice.controller;
 
 import com.harbe.authservice.dto.model.AddressDto;
 import com.harbe.authservice.service.AddressService;
-import com.harbe.commons.utils.CustomHeaders;
+import com.harbe.authservice.utils.CustomHeaders;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

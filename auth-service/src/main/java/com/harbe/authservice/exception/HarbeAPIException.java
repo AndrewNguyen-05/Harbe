@@ -1,4 +1,4 @@
-package com.harbe.productservice.exception;
+package com.harbe.authservice.exception;
 
 import org.springframework.http.HttpStatus;
 

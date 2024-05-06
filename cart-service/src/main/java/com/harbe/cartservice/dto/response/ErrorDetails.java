@@ -1,4 +1,4 @@
-package com.harbe.productservice.dto.response;
+package com.harbe.cartservice.dto.response;
 
 import java.util.Date;
 

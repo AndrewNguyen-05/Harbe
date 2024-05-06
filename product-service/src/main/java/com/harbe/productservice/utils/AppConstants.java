@@ -1,4 +1,4 @@
-package com.harbe.commons.utils;
+package com.harbe.productservice.utils;
 
 public class AppConstants {
 

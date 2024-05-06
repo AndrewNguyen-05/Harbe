@@ -1,7 +1,7 @@
 package com.harbe.authservice.service;
 
 import com.harbe.authservice.dto.model.UserDto;
-import com.harbe.commons.response.ObjectResponse;
+import com.harbe.authservice.dto.response.ObjectResponse;
 
 public interface UserService {
     UserDto createUser(UserDto userDto);

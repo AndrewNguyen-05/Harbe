@@ -6,7 +6,7 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import lombok.RequiredArgsConstructor;
-import com.harbe.commons.security.UserDetailsImpl;
+import com.harbe.authservice.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -86,8 +86,14 @@ public class AuthorizationServerConfiguration {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
-                        .requestMatchers("/actuator/**").permitAll()
-                        .requestMatchers("/signup", "/register", "/users/**", "/address/**").permitAll()
+                        .requestMatchers(
+                                "/actuator/**",
+                                "/signup",
+                                "/register",
+                                "/users/**",
+                                "/address/**",
+                                "/auth/**")
+                        .permitAll()
 
                         .anyRequest().authenticated()
 

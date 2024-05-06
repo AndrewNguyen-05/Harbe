@@ -1,7 +1,7 @@
 package com.harbe.productservice.controller;
 
-import com.harbe.commons.response.ObjectResponse;
-import com.harbe.commons.utils.AppConstants;
+import com.harbe.productservice.dto.response.ObjectResponse;
+import com.harbe.productservice.utils.AppConstants;
 import com.harbe.productservice.dto.model.ProductDto;
 import com.harbe.productservice.dto.response.ProductWithOptionForCartDto;
 import com.harbe.productservice.service.ProductService;

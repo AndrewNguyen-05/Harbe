@@ -1,4 +1,4 @@
-package com.harbe.commons.security;
+package com.harbe.productservice.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

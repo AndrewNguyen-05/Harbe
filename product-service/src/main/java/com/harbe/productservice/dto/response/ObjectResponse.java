@@ -1,4 +1,4 @@
-package com.harbe.commons.response;
+package com.harbe.productservice.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

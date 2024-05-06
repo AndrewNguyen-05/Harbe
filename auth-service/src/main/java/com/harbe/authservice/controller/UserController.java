@@ -1,10 +1,9 @@
 package com.harbe.authservice.controller;
 
 import com.harbe.authservice.dto.model.UserDto;
-import com.harbe.authservice.entity.User;
 import com.harbe.authservice.service.UserService;
-import com.harbe.commons.response.ObjectResponse;
-import com.harbe.commons.utils.AppConstants;
+import com.harbe.authservice.dto.response.ObjectResponse;
+import com.harbe.authservice.utils.AppConstants;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

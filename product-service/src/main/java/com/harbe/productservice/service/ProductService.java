@@ -1,6 +1,6 @@
 package com.harbe.productservice.service;
 
-import com.harbe.commons.response.ObjectResponse;
+import com.harbe.productservice.dto.response.ObjectResponse;
 import com.harbe.productservice.dto.model.ProductDto;
 import com.harbe.productservice.dto.response.ProductWithOptionForCartDto;
 

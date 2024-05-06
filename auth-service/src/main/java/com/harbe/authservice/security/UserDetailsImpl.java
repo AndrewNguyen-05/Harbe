@@ -1,4 +1,4 @@
-package com.harbe.productservice.security;
+package com.harbe.authservice.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.harbe.commons.security;
+package com.harbe.productservice.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

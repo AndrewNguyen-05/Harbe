@@ -1,4 +1,4 @@
-package com.harbe.productservice.dto.response;
+package com.harbe.authservice.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

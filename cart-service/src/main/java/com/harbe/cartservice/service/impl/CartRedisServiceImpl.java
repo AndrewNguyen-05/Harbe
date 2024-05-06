@@ -6,7 +6,7 @@ import com.harbe.cartservice.dto.request.UpdateCartRequest;
 import com.harbe.cartservice.dto.model.ProductDto;
 import com.harbe.cartservice.service.CartRedisService;
 import com.harbe.cartservice.service.base.impl.BaseRedisServiceImpl;
-import com.harbe.commons.exception.ResourceNotFoundException;
+import com.harbe.cartservice.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

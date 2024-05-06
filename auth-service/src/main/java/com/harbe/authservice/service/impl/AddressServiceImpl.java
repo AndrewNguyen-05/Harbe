@@ -7,7 +7,7 @@ import com.harbe.authservice.entity.User;
 import com.harbe.authservice.repository.AddressRepository;
 import com.harbe.authservice.repository.UserRepository;
 import com.harbe.authservice.service.AddressService;
-import com.harbe.commons.exception.ResourceNotFoundException;
+import com.harbe.authservice.exception.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

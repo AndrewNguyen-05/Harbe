@@ -1,4 +1,4 @@
-package com.harbe.productservice.security;
+package com.harbe.cartservice.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

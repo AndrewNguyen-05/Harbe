@@ -1,6 +1,6 @@
 package com.harbe.authservice;
 
-import com.harbe.commons.persistence.AuditingConfig;
+//import com.harbe.commons.persistence.AuditingConfig;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -33,7 +33,7 @@ import org.springframework.context.annotation.Import;
 		)
 )
 
-@Import(AuditingConfig.class)
+//@Import(AuditingConfig.class)
 @SpringBootApplication
 public class AuthServiceApplication {
 
