@@ -70,8 +70,11 @@ public class SecurityConfig {
                         .pathMatchers(HttpMethod.GET, "api/v1/products/**").permitAll()
                         .pathMatchers(HttpMethod.GET, "api/v1/categories/**").permitAll()
 
-                        //Thao tac voi user, chi admin moi co quyen
-                        .pathMatchers(HttpMethod.GET, "api/v1/users/**").hasAuthority("SCOPE_ADMIN")
+                        //Thao tac voi user, chi admin moi co quyen them xoa sua
+                        .pathMatchers(HttpMethod.GET, "api/v1/users").hasAuthority("SCOPE_ADMIN")
+                        .pathMatchers(HttpMethod.POST, "api/v1/users/**").hasAuthority("SCOPE_ADMIN")
+                        .pathMatchers(HttpMethod.PUT, "api/v1/users/**").hasAuthority("SCOPE_ADMIN")
+                        .pathMatchers(HttpMethod.DELETE, "api/v1/users/**").hasAuthority("SCOPE_ADMIN")
 
                         //Them, xoa, sua product
                         .pathMatchers(HttpMethod.POST, "api/v1/products/**").hasAuthority("SCOPE_ADMIN")
