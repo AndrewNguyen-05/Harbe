@@ -1,10 +1,12 @@
 package com.harbe.orderservice.service;
 
-import com.harbe.orderservice.dto.dataObject.ListOrderDto;
-import com.harbe.orderservice.dto.dataObject.OrderDto;
+import com.harbe.orderservice.dto.dataOut.CreateOrderResultDto;
+import com.harbe.orderservice.dto.dataOut.ListOrderDto;
+import com.harbe.orderservice.dto.dataOut.OrderDto;
+import com.harbe.orderservice.dto.dataIn.OrderBasicInfoDto;
 
 public interface OrderService {
-    OrderDto createOrder(long userId);
+    CreateOrderResultDto createOrder(long userId, OrderBasicInfoDto orderBasicInfoDto);
     ListOrderDto getAllOrder(int pageNo, int pageSize, String sortBy, String sortDir);
     OrderDto getOrderById(long id);
     OrderDto updateOrder(OrderDto orderDto, long id);

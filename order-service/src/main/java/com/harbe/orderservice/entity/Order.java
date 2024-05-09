@@ -22,12 +22,12 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private double total;
-    private String status;
-    private String paymentMethod;
-    private String paymentStatus;
+    private String status; //PREPARING, SHIPPING, COMPLETED, CANCELED
+    private String paymentMethod; //PAYPAL, COD
+    private String paymentStatus; //PENDING, COMPLETED, CANCELED
     private double shippingFee;
     private String note;
     private LocalDateTime createdAt;
+    private long addressId;
     private long userId;
-
 }

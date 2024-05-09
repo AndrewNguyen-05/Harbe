@@ -1,4 +1,4 @@
-package com.harbe.orderservice.dto.response;
+package com.harbe.orderservice.dto.dataIn;
 
 import lombok.Data;
 

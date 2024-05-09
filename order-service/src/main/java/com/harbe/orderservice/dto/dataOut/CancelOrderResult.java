@@ -1,4 +1,4 @@
-package com.harbe.orderservice.dto.dataObject;
+package com.harbe.orderservice.dto.dataOut;
 
 
 import lombok.Data;
