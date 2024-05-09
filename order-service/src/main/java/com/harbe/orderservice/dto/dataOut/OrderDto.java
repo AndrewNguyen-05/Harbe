@@ -1,6 +1,6 @@
-package com.harbe.orderservice.dto.dataObject;
+package com.harbe.orderservice.dto.dataOut;
 
-import com.harbe.orderservice.dto.response.AddressDto;
+import com.harbe.orderservice.dto.dataIn.AddressDto;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,6 +15,6 @@ public class OrderDto {
     private double shippingFee;
     private String note;
     private LocalDateTime createdAt;
-    private AddressDto address;
-
+    private long addressId;
+    private long userId;
 }

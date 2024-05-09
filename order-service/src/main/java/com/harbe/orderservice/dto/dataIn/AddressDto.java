@@ -1,6 +1,6 @@
-package com.harbe.orderservice.dto.response;
+package com.harbe.orderservice.dto.dataIn;
 
-import com.harbe.orderservice.dto.dataObject.OrderDto;
+import com.harbe.orderservice.dto.dataOut.OrderDto;
 import lombok.Data;
 
 import java.util.Set;
