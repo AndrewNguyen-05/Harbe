@@ -29,12 +29,14 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
         String key = "cart:user-" + userId;
 
         // Tao 1 stringbuilder de noi chuoi voi hieu nang tot hon la cong string
-        StringBuilder fieldKeyBuilder = new StringBuilder("product_item:");
+        StringBuilder fieldKeyBuilder;
 
         int updateQuantity;
 
         // Kiem tra xem product co option ko
         if(Objects.nonNull(item.getProductItemId())){
+
+            fieldKeyBuilder = new StringBuilder("product_item:");
 
             // Bien boolean de chi ra phan tu dau tien, khong can them dau "," phia truoc
             // Ham for dung de ghep cac optionId lai thanh 1 chuoi co dang "5,10,12"
@@ -49,6 +51,7 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
             }
 
         } else {
+            fieldKeyBuilder = new StringBuilder("product:");
             fieldKeyBuilder.append(item.getProductId());
         }
 
