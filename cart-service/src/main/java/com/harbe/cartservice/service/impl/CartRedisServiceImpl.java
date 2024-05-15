@@ -127,6 +127,11 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
     }
 
     @Override
+    public void deleteAllProductsInCart(String userId){
+        this.delete("cart:user-" + userId);
+    }
+
+    @Override
     public List<ProductDto> getProductsFromCart(String userId) {
         String key = "cart:user-" + userId;
         Map<String, Object> products = this.getField(key);

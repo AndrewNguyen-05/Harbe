@@ -43,7 +43,6 @@ public class BaseRedisServiceImpl implements BaseRedisService {
 
     @Override
     public boolean hashExist(String key, String field) {
-
         return hashOperations.hasKey(key, field);
     }
 

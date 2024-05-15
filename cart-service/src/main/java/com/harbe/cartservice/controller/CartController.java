@@ -58,6 +58,14 @@ public class CartController {
         return new ResponseEntity<>("Product delete from cart successfully!", HttpStatus.OK);
     }
 
+    @DeleteMapping("/all")
+    public ResponseEntity<String> deleteAllProductsInCart(
+            @RequestHeader(CustomHeaders.X_AUTH_USER_ID) String userId
+    ){
+        this.cartRedisService.deleteAllProductsInCart(userId);
+        return new ResponseEntity<>("Delete all products in cart successfully!", HttpStatus.OK);
+    }
+
     @GetMapping("/info")
     public String getUserInfo(@RequestHeader(CustomHeaders.X_AUTH_USER_ID) String userId,
                               @RequestHeader(CustomHeaders.X_AUTH_USER_AUTHORITIES) String authorities) {
