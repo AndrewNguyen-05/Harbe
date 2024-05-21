@@ -55,7 +55,7 @@ public class Product {
     // Cac ham xu ly logic cua product option
     public void addOption(ProductOption option){
         option.setProduct(this);
-        options.add(option);
+        //options.add(option);
     }
 
     public void updateOption(ProductOption option){
