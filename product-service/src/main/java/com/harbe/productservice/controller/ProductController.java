@@ -8,6 +8,7 @@ import com.harbe.productservice.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +26,8 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto){
-        return new ResponseEntity<>(this.productService.createProduct(productDto), HttpStatus.CREATED);
+    public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto productDto){
+            return new ResponseEntity<>(this.productService.createProduct(productDto), HttpStatus.CREATED);
     }
 
     @Operation(
@@ -53,7 +54,7 @@ public class ProductController {
     }
     @PutMapping("/{productId}")
     public ResponseEntity<ProductDto> updateProduct(
-            @RequestBody ProductDto productDto,
+            @RequestBody @Valid ProductDto productDto,
             @PathVariable(name = "productId") Long productId
     ){
         return new ResponseEntity<>(this.productService.updateProduct(productDto, productId), HttpStatus.OK);

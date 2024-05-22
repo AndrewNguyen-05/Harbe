@@ -2,6 +2,8 @@ package com.harbe.productservice.dto.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -27,8 +29,8 @@ public class ProductDto {
     @Size(min = 10, message = "Product Description should have at least 2 characters!")
     private String description;
 
-    @NotEmpty(message = "Price should not be empty")
-    @Size(min = 4, message = "Product Price should have at least 4 characters!")
+    @NotNull(message = "Price should not be empty")
+    @Positive(message = "Price must be greater than zero")
     private double price;
 
     private double discountRate;
