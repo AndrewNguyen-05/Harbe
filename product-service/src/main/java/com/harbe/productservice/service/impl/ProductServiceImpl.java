@@ -137,6 +137,17 @@ public class ProductServiceImpl implements ProductService {
         product.setThumbnailUrl(productDto.getThumbnailUrl());
         product.setCategoryUrl(productDto.getCategoryUrl());
         product.setProductSlug(SlugConvert.convert(product.getName()));
+        product.setOptions(new ArrayList<>());
+
+        List<ProductOption> options = productDto.getOptions()
+                .stream()
+                .map((option) -> this.optionMapper.mapToEntity(option))
+                .collect(Collectors.toList());
+
+
+        for(ProductOption option : options){
+            product.updateOption(option);
+        }
 
         if(!product.getCategoryUrl().equals("")){
             String categoryUrl = SlugConvert.convert(product.getCategoryUrl());
@@ -145,32 +156,33 @@ public class ProductServiceImpl implements ProductService {
         }
 
 
+
         // Xu ly logic cho update option
         //1. Lay het tat ca option tu product update
-        Set<ProductOption> options = productDto.getOptions().stream().map(option -> optionMapper.mapToEntity(option)).collect(Collectors.toSet());
+//        Set<ProductOption> options = productDto.getOptions().stream().map(option -> optionMapper.mapToEntity(option)).collect(Collectors.toSet());
 
         //2. Lay het tat ca option tu product hien tai (Su dung cach copy de khong tham chieu toi Set goc)
-        Set<ProductOption> productOptions = new HashSet<>(product.getOptions());
+//        Set<ProductOption> productOptions = new HashSet<>(product.getOptions());
 
         //3. Duyet qua tat ca option cua product hien tai,
         // neu ko nam trong Set option cua product update thi se bi xoa di
-        for(ProductOption option : productOptions){
-            boolean isContain = options.contains(option);
-
-            // Ham dismissOption su dung de ngat bo lien ket (xoa khoi product truoc)
-            // Can phai ngat lien ket voi Product truoc (do bidirectional relationship), sau do moi
-            // xoa trong database
-            if(!isContain && product.dismissOption(option)){
-                ProductOption deletedOption = this.optionRepository.findById(option.getId()).orElseThrow(() -> new ResourceNotFoundException("Option", "id", option.getId()));
-                this.optionRepository.delete(deletedOption);
-            }
-        }
+//        for(ProductOption option : productOptions){
+//            boolean isContain = options.contains(option);
+//
+//            // Ham dismissOption su dung de ngat bo lien ket (xoa khoi product truoc)
+//            // Can phai ngat lien ket voi Product truoc (do bidirectional relationship), sau do moi
+//            // xoa trong database
+//            if(!isContain && product.dismissOption(option)){
+//                ProductOption deletedOption = this.optionRepository.findById(option.getId()).orElseThrow(() -> new ResourceNotFoundException("Option", "id", option.getId()));
+//                this.optionRepository.delete(deletedOption);
+//            }
+//        }
 
         //3. Cuoi cung la thuc hien logic update (Neu chua co thi se dc them,
         // con neu da co (cung name) thi se dc thay doi value)
-        for(ProductOption option : options){
-            product.updateOption(option);
-        }
+//        for(ProductOption option : options){
+//            product.updateOption(option);
+//        }
 
         // Xy ly tuong tu cho product specification
         Set<ProductSpecification> specifications = productDto.getSpecifications().stream().map(specification -> specificationMapper.mapToEntity(specification)).collect(Collectors.toSet());

@@ -55,21 +55,24 @@ public class Product {
     // Cac ham xu ly logic cua product option
     public void addOption(ProductOption option){
         option.setProduct(this);
-        //options.add(option);
     }
 
     public void updateOption(ProductOption option){
-        boolean flag = true;
-        for(ProductOption opt : options){
-            if(opt.getName().equals(option.getName())){
-                opt.setValue(option.getValue());
-                flag = false;
-            }
-        }
-        if(flag) {
-            addOption(option);
-        }
+        option.setProduct(this);
+        options.add(option);
     }
+//    public void updateOption(ProductOption option){
+//        boolean flag = true;
+//        for(ProductOption opt : options){
+//            if(opt.getName().equals(option.getName())){
+//                opt.setValue(option.getValue());
+//                flag = false;
+//            }
+//        }
+//        if(flag) {
+//            addOption(option);
+//        }
+//    }
 
     public boolean dismissOption(ProductOption option) {
         return this.options.remove(option);
