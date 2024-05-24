@@ -157,6 +157,8 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
                 productList.add(productDto);
             }
         }
+        // Sắp xếp danh sách sản phẩm theo ID
+        productList.sort(Comparator.comparing(ProductDto::getId));
         return productList;
     }
 
