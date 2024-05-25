@@ -25,9 +25,10 @@ public class Category {
 
     @Column(unique = true)
     private String urlKey;
+
     private String thumbnailUrl;
     private Long parentId;
-    private boolean isPrimary;
+    //private boolean isPrimary;
 
     @OneToMany(mappedBy = "category")
     private Set<Product> products = new HashSet<>();

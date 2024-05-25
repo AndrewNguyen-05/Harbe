@@ -1,9 +1,11 @@
-INSERT INTO products(id, name, product_slug, brand, description, discount_rate, price, quantity_sold, rating_average, review_count, thumbnail_url)
+INSERT INTO products(id, name, product_slug, category_id, category_url, brand, description, discount_rate, price, quantity_sold, rating_average, review_count, thumbnail_url)
 VALUES 
-(1, 'Chuột không dây LOGITECH M331 Black Cổng USB - Hàng chính hãng','Chuột-không-dây-LOGITECH-M331-Black-Cổng-USB' ,'Logitech', 'Hoàn thành tất cả công việc mà không bỏ lỡ một nhịp nào hoặc làm phiền những người xung quanh. Chuột yên lặng (Silent Mice) cho cảm giác nhấp chuột tương tự mà không có tiếng nhấp chuột - giảm hơn 90% tiếng ồn. Chân chuột bền bỉ, hiệu suất cao lướt êm trên bàn làm việc. Bánh xe cuộn êm ái bổ sung trọn vẹn cho trải nghiệm yên lặng. Chuột yên lặng (Silent Mice) loại bỏ tiếng ồn quá mức trong khi vẫn bảo vệ sức khỏe và hiệu suất của mọi người. Hãy biến đây thành cú nhấp chuột gây khó chịu cuối cùng của bạn. Gia đình và bạn bè sẽ cảm ơn bạn.', 20, 339000, 250, 4.5, 200, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_61_1_.png'),
+(1, 'Chuột không dây LOGITECH M331 Black Cổng USB - Hàng chính hãng','Chuột-không-dây-LOGITECH-M331-Black-Cổng-USB', 6 ,'chuot-may-tinh' ,'Logitech', 'Hoàn thành tất cả công việc mà không bỏ lỡ một nhịp nào hoặc làm phiền những người xung quanh. Chuột yên lặng (Silent Mice) cho cảm giác nhấp chuột tương tự mà không có tiếng nhấp chuột - giảm hơn 90% tiếng ồn. Chân chuột bền bỉ, hiệu suất cao lướt êm trên bàn làm việc. Bánh xe cuộn êm ái bổ sung trọn vẹn cho trải nghiệm yên lặng. Chuột yên lặng (Silent Mice) loại bỏ tiếng ồn quá mức trong khi vẫn bảo vệ sức khỏe và hiệu suất của mọi người. Hãy biến đây thành cú nhấp chuột gây khó chịu cuối cùng của bạn. Gia đình và bạn bè sẽ cảm ơn bạn.', 20, 339000, 250, 4.5, 200, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_61_1_.png'),
 (2, 
 'Apple iPhone 12',
 'Apple-iPhone-12' ,
+2,
+'dien-thoai',
 'Apple', 
 'Điện Thoại iPhone 12
 iPhone 12 đẩy nhanh mọi tác vụ với mạng 5G siêu nhanh.1 A14 Bionic, chip nhanh nhất trên điện thoại thông minh. Hệ thống camera kép mới. Với màn hình Super Retina XDR tuyệt đẹp, nay bạn có thể chiêm ngưỡng từng chi tiết hình ảnh vô cùng sống động.
@@ -44,6 +46,8 @@ Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bê
 (3, 
 'Tai Nghe Bluetooth Chụp Tai Sony WH-1000XM4 Hi-Res Noise Canceling - Hàng Chính Hãng',
 'Tai-Nghe-Bluetoot-Chụp-Tai-Sony-WH-1000XM4-Hi-Res-Noise-Canceling-Hàng-Chính-Hãng' ,
+5,
+'tai-nghe',
 'Sony', 
 'Tai nghe Sony WH-1000XM4 chính hãng
 
@@ -66,6 +70,8 @@ Ngoài ra, tai nghe Sony WH1000XM4 cũng có thể tối ưu hóa khử tiếng 
 (4, 
 'Tai nghe Bluetooth True Wireless Sony WF-1000XM5',
 'Tai-nghe-Bluetooth-True-Wireless-Sony-WF-1000XM5',
+5,
+'tai-nghe',
 'Sony', 
 'Tai nghe Sony WF-1000XM5 - Âm thanh vượt trội
 Tai nghe không dây Sony WF-1000XM5 là sự lựa chọn hoàn hỏa giúp bạn giải tỏa áp lực, căng thẳng sau giờ làm việc hay cho bạn đắm chìm vào những bản nhạc mà mình yêu thích. Mang trong mình công nghệ chống ồn tối tân nhất thời điểm hiện tại, tai nghe nhét tai này cho ra chất lượng âm thanh chân thực một cách đáng kinh ngạc.
@@ -81,6 +87,8 @@ Trải nghiệm cuộc gọi thoại trên WF-1000XM5 được đánh đánh gi�
 (5, 
 'Tai nghe không dây Sony WF-1000XM3',
 'Tai-nghe-không-dây-Sony-WF-1000XM3',
+5,
+'tai-nghe',
 'Sony', 
 'Sony WF-1000XM3 - Tai nghe sở hữu công nghệ không dây đích thực
 Với công nghệ không dây bluetooth và thiết kế tiện dụng vừa vặn mang lại sự thoải mái cả ngày dài, tai nghe chống ồn Sony WF-1000XM3 cho bạn sự tự do đích thực của công nghệ không dây.
@@ -101,6 +109,8 @@ Bộ màng loa 6 mm nhỏ nhưng mạnh mẽ nằm bên trong tai nghe, mang đ�
 (6, 
 'Tai nghe Bluetooth True Wireless Sony WF-1000XM4',
 'Tai-nghe-Bluetooth-True-Wireless-Sony-WF-1000XM4',
+5,
+'tai-nghe',
 'Sony', 
 'Tai nghe Sony WF-1000XM4 – Xứng danh ông hoàng tai nghe
 Khi nói về tai nghe không thể không nhắc đến tai nghe của thương hiệu Sony. Cái tên Sony WF-1000XM4 đang được nhắc đến khá nhiều trên các mặt báo. Cùng tìm hiểu xem liệu chiếc tai nghe không dây này có gì đặc sắc nhé.
@@ -119,6 +129,8 @@ Chưa dừng lại ở đó, tính năng DSEE Extreme với cơ chế tăng cư�
 (7, 
 'Laptop ASUS TUF Gaming F15 FX507ZC4-HN074W',
 'Laptop-ASUS-TUF-Gaming-F15-FX507ZC4-HN074W',
+1,
+'laptop',
 'ASUS', 
 'Laptop Asus Tuf Gaming F15 FX507ZC4-HN074W - Thoải mái chiến game, lưu trữ đã đời 
 Laptop Asus Tuf Gaming F15 FX507ZC4-HN074W là dòng laptop gaming có hiệu năng vượt trội, nhiều tính năng tân tiến và tuyệt vời cho game thủ. Mẫu laptop này không chỉ thực hiện tốt khả năng xử lý đồ họa mà còn có những chuyển động nhanh nhạy chuẩn xác. Hãy xem đoạn mô tả sau đây để hiểu rõ hơn về ưu điểm của dòng laptop Asus Gaming mới nhất này.
@@ -136,6 +148,8 @@ Asus Tuf Gaming F15 FX507ZC4-HN074W thuộc phân khúc laptop 20 triệu đư�
 (8, 
 'Laptop Lenovo Ideapad 3 15IAU7 i7 1255U/16GB/512GB/15.6"FHD/Win 11',
 'Laptop-Lenovo-Ideapad-3-15IAU7-i7-1255U-16GB-512GB-15.6"FHD-Win-11' ,
+1,
+'laptop',
 'Lenovo', 
 'Đặc điểm nổi bật của Lenovo Ideapad 3 15IAU7 i7 1255U (82RK00W4VN)
 Lenovo IdeaPad 3 15IAU7 là phương tiện học tập và làm việc hoàn hảo dành cho bạn nhờ cấu hình cực mạnh trong tầm giá phải chăng. Bộ vi xử lý Intel Core i7 thế hệ thứ 12 mạnh mẽ, dung lượng RAM lớn 16GB, màn hình 15,6 inch Full HD rõ nét giúp mọi việc của bạn thoải mái và nhanh chóng hơn bao giờ hết.
@@ -160,6 +174,8 @@ Tính năng trí tuệ nhân tạo AI Engine của Lenovo IdeaPad 3i Gen 7 đem 
 (9, 
 'MacBook Air 13 inch M2 2022 8CPU 8GPU 8GB/256GB',
 'MacBook-Air-13-inch-M2-2022-8CPU-8GPU-8GB-256GB',
+1,
+'laptop',
 'Apple', 
 'Không chỉ khơi gợi cảm hứng qua việc cách tân thiết kế, MacBook Air M2 2022 còn chứa đựng nguồn sức mạnh lớn lao với chip M2 siêu mạnh, thời lượng pin chạm  ngưỡng 18 giờ, màn hình Liquid Retina tuyệt đẹp và hệ thống camera kết hợp cùng âm thanh tân tiến.
 Mỏng, nhẹ và tràn đầy cảm hứng
@@ -179,6 +195,8 @@ Tối ưu năng lực vận hành với macOS
 (10, 
 'Củ sạc Apple Power Adapter 20W Type-C',
 'Củ-sạc-Apple-Power-Adapter-20W-Type-C',
+9,
+'cu-sac',
 'Apple', 
 'Sạc nhanh 20W USB-C Power Adapter là phụ kiện hoàn hảo cho iPhone, iPad có hỗ trợ sạc nhanh, đặc biệt là dòng iPhone 12 mới ra mắt. Một sản phẩm phụ kiện chính hãng từ Apple sẽ mang đến hiệu suất sạc và độ an toàn tối ưu cho iPhone, iPad của bạn.
 Thiết kế thanh lịch, tương thích mọi ổ cắm
@@ -199,6 +217,8 @@ USB-C đang là tương lai của công nghiệp kết nối hiện nay, khi h�
 (11,
 	'Màn hình AOC 22B2HN/74 (21.5inch/FHD/VA/75Hz/7ms/250nits/HDMI+VGA)',
 	'Màn-hình-AOC-22B2HN-74-(21.5inch-FHD-VA-75Hz-7ms-250nits-HDMI+VGA)',
+    7,
+    'man-hinh',
 	'AOC',
 	'Mô tả sản phẩm
 AOC 22B2HN mang lại trải nghiệm chất lượng cao đơn giản, lý tưởng cho cả người dùng văn phòng hiện đại và người dùng gia đình.
@@ -231,6 +251,8 @@ Cho dù bạn thích thiết lập giá treo tường hay để màn hình trên
 (12,
 	'Chuột Logitech G Pro X Superlight',
 	'Chuột-Logitech-G-Pro-X-Superlight',
+    6,
+    'chuot-may-tinh',
 	'Logitech',
 	'Đột phá về thiết kế và trọng lượng
 Chuột Logitech G Pro X Superlight là một trong những dòng chuột máy tính nhẹ nhất từ trước tới nay của Logitech, Logitech G Pro X Superlight là bước đột phá về kỹ thuật khi đạt được trọng lượng ít hơn 63 gram – nhẹ hơn gần 25% so với chuột PRO không dây tiêu chuẩn của Logitech.
@@ -253,6 +275,8 @@ LOGITECH G PRO X SUPERLIGHT được giới chuyên môn đánh giá đây là m
 (13,
 	'Bàn phím cơ không dây FL-Esports FL750 Polar Night Black 3 Mode',
 	'Bàn-phím-cơ-không-dây-FL-Esports-FL750-Polar-Night-Black-3-Mode',
+    11,
+    'ban-phim',
 	'FL-ESPORT',
 	'Thông tin sản phẩm:
 – 3 mode (Cáp/ USB 2.4Ghz/ Bluetooth)
@@ -273,6 +297,8 @@ FL-Esports FL750 Polar Night Black 3 Mode là chiếc bàn phím cơ mới nhấ
 (14,
 	'Loa Bluetooth JBL Charge 5',
 	'Loa-Bluetooth-JBL-Charge-5',
+    10,
+    'loa',
 	'JBL',
 	'Thiết kế mạnh mẽ, hỗ trợ kháng nước, chống bụi tiêu chuẩn IP67
 Loa JBL Charge 5 là chiếc loa bluetooth thế hệ thứ năm thuộc dòng JBL Charge. Chiếc loa này được thay đổi mạnh mẽ cả về thiết kế lẫn công nghệ âm thanh mang đến chất lượng âm thanh vượt trội dù là ngoài trời hay trong nhà. Bạn sẽ có một bữa tiệc BBQ ngoài trời, hồ bơi hay bãi biển, ngập tràn âm thanh sống động, thỏa sức chơi đùa cùng với bạn bè.
@@ -302,6 +328,8 @@ Cuộc vui không cần đường lui. Mang trong mình thời lượng pin oanh
 (15,
 	'Laptop LG Gram 2023 16Z90R EAH75A5',
 	'Laptop-LG-Gram-2023-16Z90R-EAH75A5',
+    1,
+    'laptop',
 	'LG',
 	'Đánh giá chi tiết laptop LG Gram 2023 16Z90R EAH75A5
 LG Gram 2023 16Z90R EAH75A5 khơi nguồn cảm hứng làm việc với ngoại hình thiết kế siêu nhẹ siêu mỏng chuẩn laptop hiện đại năm nay. Thu hút bởi ngoại hình sang trọng cùng hiệu năng hoạt động đỉnh cao cho mọi yêu cầu học tập và làm việc hằng ngày của người dùng. Cùng Harbe tìm hiểu chi tiết về sản phẩm LG Gram 2023 này nhé!
@@ -335,6 +363,8 @@ Kết nối linh hoạt
 (16,
 	'Adapter Sạc Anker 511 Charger Nano 3 30W 1 Cổng Type-C A2147',
 	'Adapter-Sạc-Anker-511-Charger-Nano-3-30W-1-Cổng-Type-C-A2147',
+    9,
+    'cu-sac',
 	'ANKER',
 	'Nhỏ nhưng mạnh mẽ
 Adapter Sạc Anker 511 Charger Nano 3 30W 1 Cổng Type-C A2147 - Bằng cách thay silicon cho GaN, chúng tôi đã có thể lắp công suất 30W vào bộ sạc chỉ dày 1,12 inch và nhỏ hơn 70% so với bộ sạc 30W ban đầu.
@@ -366,6 +396,8 @@ Khả năng tương thích
 (17,
 	'Dây Cáp Sạc Lightning Cho iPhone Anker PowerLine II 0.9m - A8432',
 	'Dây-Cáp-Sạc-Lightning-Cho-iPhone-Anker-PowerLine-II-0.9m-A8432',
+    8,
+    'cap-sac',
 	'ANKER',
 	'Tốc độ sạc nhanh
 Cáp Sạc Lightning Anker Powerline II A8432 có đường kính rộng và công nghệ giảm kháng nên cho tốc độ sạc nhanh nhất sẽ giúp bạn truyền dữ liệu qua lại từ máy tính qua điện thoại một cách ổn định nhất.
@@ -387,6 +419,8 @@ Cáp tương thích với các thiết bị Apple như iPhone / iPad / Mini 2 / 
 (18,
 	'Apple iPhone 15 Pro Max',
 	'Apple-iPhone-15-Pro-Max',
+    2,
+    'dien-thoai',
 	'Apple',
 	'Nội dung quảng cáo
 Giờ đây với thiết kế titan nhẹ và bền chắc, cùng chip A17 Pro cho khả năng đa nhiệm khủng. Bắt trọn những khoảnh khắc đặc biệt khi đang di chuyển với hệ thống camera chuyên nghiệp linh hoạt hơn. Và một bước nhảy vọt về tốc độ truyền dữ liệu với USB-C cùng chuẩn USB 3.
@@ -418,6 +452,8 @@ Pháp lý
 (19,
 	'Điện thoại AI Samsung Galaxy S24 Ultra, Camera 200MP Zoom 100x, S Pen',
 	'Điện-thoại-AI-Samsung-Galaxy-S24-Ultra-Camera-200MP-Zoom-100x-S-Pen',
+    2,
+    'dien-thoai',
 	'Samsung',
 	'Màn hình với độ sáng thích ứng lớn nhất lên đến 2600 nit
 Mặt kính Corning Gorilla Armor giúp giảm phản xạ và cải thiện độ sắc nét của hình ảnh, ngay cả dưới ánh sáng mặt trời trực tiếp. Đồng thời công nghệ Vision Booster cải thiện độ tương phản và màu sắc cho khả năng hiển thị rõ nét mang lại trải nghiệm xem ấn tượng.
@@ -477,6 +513,8 @@ Tốc độ xử lý vượt bậc cân mọi tựa game yêu thích. Với bu�
 (20,
 	'Sạc Dự Phòng 20000mAh Trong Suốt Sạc Siêu Nhanh, Màn Hình Led Thiết Kế Mới, 2 Cổng USB Sạc Nhanh, 1 Cổng Sạc Nhanh TypeC',
 	'Sạc-Dự-Phòng-20000mAh-Trong-Suốt-Sạc-Siêu-Nhanh-Màn-Hình-Led-Thiết-Kế-Mới-2-Cổng-USB-Sạc-Nhanh-1-Cổng-Sạc-Nhanh-TypeC',
+    9,
+    'cu-sac',
 	'NBAYOU',
 	'Thông Tin Sản Phẩm
 - Tên sản phẩm : Sạc Dựng Phòng Trong Suốt 20000mAh
@@ -501,19 +539,21 @@ Hướng Dẫn Sử Dụng
 	4.7,
 	578,
 	'https://salt.tikicdn.com/cache/750x750/ts/product/28/8e/39/9738044df7232de33673259d6e69cee4.jpg.webp'),
-(21, 'Laptop ASUS Zenbook 14 OLED UM3402YA-KM405W', 'Laptop-ASUS-Zenbook-14-OLED-UM3402YA-KM405W','Asus', 'Laptop Asus Zenbook 14 OLED UM3402YA-KM405W sở hữu sức mạnh đỉnh cao với vi xử lý AMD Ryzen 5 - 7530 2.0 GHz, RAM 16GB LPDDR4X ổn định trong mọi tác vụ. Với ổ SSD 512GB M.2 NVMe™ PCIe® 3.0, Zenbook 14 đảm bảo dung lượng lớn để lưu trữ dữ liệu. Màn hình laptop Asus Zenbook 14" NanoEdge OLED 2.8K của máy mang lại trải nghiệm hiển thị tuyệt vời với khả năng lọc ánh sáng xanh đến 70%.', 10, 20490000, 100, 4.0, 100, 'https://cdn2.cellphones.com.vn/x/media/catalog/product/t/e/text_ng_n_17__4_9.png'),
-(22, 'Macbook Air M3 15 inch 2024 8GB - 256GB | Chính hãng Apple Việt Nam', 'Macbook-Air-M3-15-inch-2024-8GB-256GB','Apple', 'Macbook Air M3 15 inch 2024 đem lại trải nghiệm đột phá nhờ được trang bị CPU Apple M3 8 lõi và GPU 10 lõi thế hệ mới, kết hợp cùng RAM 8GB và 256GB SSD. Về khả năng hiển thị, Macbook Air M3 2024 cũng được đánh giá cao với màn hình 15.3 inch sử dụng công nghệ True Tone, cùng camera FaceTime HD 1080p và hệ điều hành MacOS siêu mượt mà. Đặc biệt hơn, Mac Air M3 15 inch 2024 còn ghi điểm với Wi-Fi 6E và công nghệ âm thanh Dolby Atmos, giúp cải thiện đáng kể trải nghiệm kết nối và giải trí.', 15, 32990000, 50, 5, 25, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_air_m3_16gb.png'),
-(23, 'Laptop Lenovo Ideapad Slim 5 Light 14ABR8 82XS002JVN', 'Laptop-Lenovo-Ideapad-Slim-5-Light-14ABR8-82XS002JVN','Lenovo', 'Lenovo Ideapad Slim 5 Light 14ABR8-82XS002JVN là một laptop văn phòng đáng chú ý với trọng lượng nhẹ 1.17 kg và độ mỏng chỉ 324.1 x 215.7 x 17.1 mm. Laptop này được trang bị bộ vi xử lý AMD Ryzen 7 7730U và RAM 16GB, giúp khả năng xử lý nhanh chóng và hiệu quả cho công việc văn phòng và học tập. Điểm mạnh của laptop Lenovo Ideapad này là dung lượng lưu trữ ổ cứng SSD 512GB, giúp người dùng lưu trữ dữ liệu công việc một cách thuận tiện.', 20, 15990000, 250, 3, 150, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/l/a/laptop-lenovo-ideapad-slim-5-light-14abr8-82xs002jvn.jpg'),
-(24, 'Tai nghe Bluetooth Apple AirPods Pro 2 2023 USB-C | Chính hãng Apple Việt Nam','Tai-nghe-Bluetooth-Apple-AirPods-Pro-2-2023-USB-C','Apple', 'Airpods Pro 2 Type-C với công nghệ khử tiếng ồn chủ động mang lại khả năng khử ồn lên gấp 2 lần mang lại trải nghiệm nghe - gọi và trải nghiệm âm nhạc ấn tượng. Cùng với đó, điện thoại còn được trang bị công nghệ âm thanh không gian giúp trải nghiệm âm nhạc thêm phần sống động. Airpods Pro 2 Type-C với cổng sạc Type C tiện lợi cùng viên pin mang lại thời gian trải nghiệm lên đến 6 giờ tiện lợi.', 30, 5690000, 100, 3.5, 50, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/a/p/apple-airpods-pro-2-usb-c_8_.png'),
-(25, 'Tai nghe Bluetooth True Wireless Sony WF-1000XM5','Tai-nghe-Bluetooth-True-Wireless-Sony-WF-1000XM5' ,'Sony', 'Tai nghe không dây Sony WF-1000XM5 là sự lựa chọn hoàn hỏa giúp bạn giải tỏa áp lực, căng thẳng sau giờ làm việc hay cho bạn đắm chìm vào những bản nhạc mà mình yêu thích. Mang trong mình công nghệ chống ồn tối tân nhất thời điểm hiện tại, tai nghe nhét tai này cho ra chất lượng âm thanh chân thực một cách đáng kinh ngạc.', 15, 5590000, 250, 4.5, 200, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/a/tai-nghe-khong-day-sony-wf-1000xm5-6_1.png'),
-(26, 'iPhone 15 Pro Max 512GB | Chính hãng VN/A','iPhone-15-Pro-Max-512GB' ,'Apple', 'iPhone 15 Pro Max 512GB là ấn phẩm smartphone mới của Apple, nổi bật với bộ nhớ trong lên đến 512GB, cung cấp khả năng ghi nhớ, lưu trữ không giới hạn. Bên cạnh đó, thế hệ iPhone mới này cũng đặc biệt mang tới những trải nghiệm siêu mượt mà trong mọi tác vụ nhờ được kế thừa sức mạnh xử lý từ con chip A17 Pro. Chưa hết, máy còn đi kèm với cụm ba camera sau 48MP hỗ trợ chụp đêm và quay phim chuyên nghiệp, giúp nâng tầm khả năng nhiếp ảnh của người dùng.', 0, 37490000, 100, 4.5, 200, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_5.png'),
-(27, 'Samsung Galaxy S24 Ultra 12GB 256GB','Samsung-Galaxy-S24-Ultra-12GB-256GB' ,'Samsung', 'Samsung S24 Ultra là siêu phẩm smartphone đỉnh cao mở đầu năm 2024 đến từ nhà Samsung với chip Snapdragon 8 Gen 3 For Galaxy mạnh mẽ, công nghệ tương lai Galaxy AI cùng khung viền Titan đẳng cấp hứa hẹn sẽ mang tới nhiều sự thay đổi lớn về mặt thiết kế và cấu hình. SS Galaxy S24 bản Ultra sở hữu màn hình 6.8 inch Dynamic AMOLED 2X tần số quét 120Hz. Máy cũng sở hữu camera chính 200MP, camera zoom quang học 50MP, camera tele 10MP và camera góc siêu rộng 12MP.', 20, 26390000, 175, 4.0, 170, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s24-ultra_9_.png'),
-(28, 'Apple Watch SE 2 2023 40mm (GPS) viền nhôm | Chính hãng Apple Việt Nam','Apple-Watch-SE-2-2023-40mm' ,'Apple', 'Apple Watch SE 2023 40mm (GPS) với trang bị màn hình Retina cho hiển thị vô cùng sắc nét cùng kính cường lực vô cùng chắc chắn, sang trọng và cực kỳ đẹp mắt. Kích thước đồng hồ là 44mm nhỏ gọn cùng dây đeo cao su êm ái. Sản phẩm Apple Watch SE 2023 được tích hợp chip S8 SiP mạnh mẽ, thời gian sử dụng lên đến 18 giờ.', 25, 5890000, 50, 5.0, 125, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/2/a/2apple-watch-se-2023-40mm-vien-nhom-day-silicone-xanh-den-2.jpg'),
-(29, 'Đồng hồ Samsung Galaxy Watch6 44mm','Đồng-hồ-Samsung-Galaxy-Watch6-44mm' ,'Samsung', 'Samsung watch 6 44mm chính là sự quan tâm hàng đầu của những người dùng yêu thích các dòng sản phẩm đồng hồ thông minh hiện nay. Thế hệ thứ 6 đã kế thừa và cải tiến rất tốt phong cách thiết kế sang trọng cùng những tính năng cao cấp từ các thế hệ trước. Chính vì vậy mà đồng hồ lần này rất được kỳ vọng sẽ tiếp tục trở thành một siêu phẩm làm nức lòng người dùng.', 15, 4390000, 75, 4.5, 25, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/m/sm-r930_001_front_graphite_2.png'),
-(30, 'Màn hình Gaming ASUS TUF VG249Q3A 24 inch','Màn-hình-Gaming-ASUS-TUF-VG249Q3A-24-inch' ,'Asus', 'Màn hình Gaming ASUS TUF 24 VG249Q3A 24 inch sở hữu kích thước lớn trên tấm nền Fast IPS mới với tần số quét lên đến 180Hz. Hơn hết màn hình Asus này còn có gam màu cực chuẩn 99% sRGB, nên không chỉ ưu việt cho chơi game mà còn xử lý công việc đồ họa mượt mà.', 10, 3490000, 15, 4.5, 50, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/man-hinh-gaming-asus-tuf-vg249q3a-24-inch_6_.png'),
+(21, 'Laptop ASUS Zenbook 14 OLED UM3402YA-KM405W', 'Laptop-ASUS-Zenbook-14-OLED-UM3402YA-KM405W', 1, 'laptop', 'Asus', 'Laptop Asus Zenbook 14 OLED UM3402YA-KM405W sở hữu sức mạnh đỉnh cao với vi xử lý AMD Ryzen 5 - 7530 2.0 GHz, RAM 16GB LPDDR4X ổn định trong mọi tác vụ. Với ổ SSD 512GB M.2 NVMe™ PCIe® 3.0, Zenbook 14 đảm bảo dung lượng lớn để lưu trữ dữ liệu. Màn hình laptop Asus Zenbook 14" NanoEdge OLED 2.8K của máy mang lại trải nghiệm hiển thị tuyệt vời với khả năng lọc ánh sáng xanh đến 70%.', 10, 20490000, 100, 4.0, 100, 'https://cdn2.cellphones.com.vn/x/media/catalog/product/t/e/text_ng_n_17__4_9.png'),
+(22, 'Macbook Air M3 15 inch 2024 8GB - 256GB | Chính hãng Apple Việt Nam', 'Macbook-Air-M3-15-inch-2024-8GB-256GB', 1,'laptop', 'Apple', 'Macbook Air M3 15 inch 2024 đem lại trải nghiệm đột phá nhờ được trang bị CPU Apple M3 8 lõi và GPU 10 lõi thế hệ mới, kết hợp cùng RAM 8GB và 256GB SSD. Về khả năng hiển thị, Macbook Air M3 2024 cũng được đánh giá cao với màn hình 15.3 inch sử dụng công nghệ True Tone, cùng camera FaceTime HD 1080p và hệ điều hành MacOS siêu mượt mà. Đặc biệt hơn, Mac Air M3 15 inch 2024 còn ghi điểm với Wi-Fi 6E và công nghệ âm thanh Dolby Atmos, giúp cải thiện đáng kể trải nghiệm kết nối và giải trí.', 15, 32990000, 50, 5, 25, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_air_m3_16gb.png'),
+(23, 'Laptop Lenovo Ideapad Slim 5 Light 14ABR8 82XS002JVN', 'Laptop-Lenovo-Ideapad-Slim-5-Light-14ABR8-82XS002JVN', 1,'laptop', 'Lenovo', 'Lenovo Ideapad Slim 5 Light 14ABR8-82XS002JVN là một laptop văn phòng đáng chú ý với trọng lượng nhẹ 1.17 kg và độ mỏng chỉ 324.1 x 215.7 x 17.1 mm. Laptop này được trang bị bộ vi xử lý AMD Ryzen 7 7730U và RAM 16GB, giúp khả năng xử lý nhanh chóng và hiệu quả cho công việc văn phòng và học tập. Điểm mạnh của laptop Lenovo Ideapad này là dung lượng lưu trữ ổ cứng SSD 512GB, giúp người dùng lưu trữ dữ liệu công việc một cách thuận tiện.', 20, 15990000, 250, 3, 150, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/l/a/laptop-lenovo-ideapad-slim-5-light-14abr8-82xs002jvn.jpg'),
+(24, 'Tai nghe Bluetooth Apple AirPods Pro 2 2023 USB-C | Chính hãng Apple Việt Nam','Tai-nghe-Bluetooth-Apple-AirPods-Pro-2-2023-USB-C', 5, 'tai-nghe', 'Apple', 'Airpods Pro 2 Type-C với công nghệ khử tiếng ồn chủ động mang lại khả năng khử ồn lên gấp 2 lần mang lại trải nghiệm nghe - gọi và trải nghiệm âm nhạc ấn tượng. Cùng với đó, điện thoại còn được trang bị công nghệ âm thanh không gian giúp trải nghiệm âm nhạc thêm phần sống động. Airpods Pro 2 Type-C với cổng sạc Type C tiện lợi cùng viên pin mang lại thời gian trải nghiệm lên đến 6 giờ tiện lợi.', 30, 5690000, 100, 3.5, 50, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/a/p/apple-airpods-pro-2-usb-c_8_.png'),
+(25, 'Tai nghe Bluetooth True Wireless Sony WF-1000XM5','Tai-nghe-Bluetooth-True-Wireless-Sony-WF-1000XM5' , 5, 'tai-nghe', 'Sony', 'Tai nghe không dây Sony WF-1000XM5 là sự lựa chọn hoàn hỏa giúp bạn giải tỏa áp lực, căng thẳng sau giờ làm việc hay cho bạn đắm chìm vào những bản nhạc mà mình yêu thích. Mang trong mình công nghệ chống ồn tối tân nhất thời điểm hiện tại, tai nghe nhét tai này cho ra chất lượng âm thanh chân thực một cách đáng kinh ngạc.', 15, 5590000, 250, 4.5, 200, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/a/tai-nghe-khong-day-sony-wf-1000xm5-6_1.png'),
+(26, 'iPhone 15 Pro Max 512GB | Chính hãng VN/A','iPhone-15-Pro-Max-512GB' , 2, 'dien-thoai', 'Apple', 'iPhone 15 Pro Max 512GB là ấn phẩm smartphone mới của Apple, nổi bật với bộ nhớ trong lên đến 512GB, cung cấp khả năng ghi nhớ, lưu trữ không giới hạn. Bên cạnh đó, thế hệ iPhone mới này cũng đặc biệt mang tới những trải nghiệm siêu mượt mà trong mọi tác vụ nhờ được kế thừa sức mạnh xử lý từ con chip A17 Pro. Chưa hết, máy còn đi kèm với cụm ba camera sau 48MP hỗ trợ chụp đêm và quay phim chuyên nghiệp, giúp nâng tầm khả năng nhiếp ảnh của người dùng.', 0, 37490000, 100, 4.5, 200, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_5.png'),
+(27, 'Samsung Galaxy S24 Ultra 12GB 256GB','Samsung-Galaxy-S24-Ultra-12GB-256GB' , 2,'dien-thoai',  'Samsung', 'Samsung S24 Ultra là siêu phẩm smartphone đỉnh cao mở đầu năm 2024 đến từ nhà Samsung với chip Snapdragon 8 Gen 3 For Galaxy mạnh mẽ, công nghệ tương lai Galaxy AI cùng khung viền Titan đẳng cấp hứa hẹn sẽ mang tới nhiều sự thay đổi lớn về mặt thiết kế và cấu hình. SS Galaxy S24 bản Ultra sở hữu màn hình 6.8 inch Dynamic AMOLED 2X tần số quét 120Hz. Máy cũng sở hữu camera chính 200MP, camera zoom quang học 50MP, camera tele 10MP và camera góc siêu rộng 12MP.', 20, 26390000, 175, 4.0, 170, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/a/samsung-galaxy-s24-ultra_9_.png'),
+(28, 'Apple Watch SE 2 2023 40mm (GPS) viền nhôm | Chính hãng Apple Việt Nam','Apple-Watch-SE-2-2023-40mm' , 4, 'dong-ho-thong-minh', 'Apple', 'Apple Watch SE 2023 40mm (GPS) với trang bị màn hình Retina cho hiển thị vô cùng sắc nét cùng kính cường lực vô cùng chắc chắn, sang trọng và cực kỳ đẹp mắt. Kích thước đồng hồ là 44mm nhỏ gọn cùng dây đeo cao su êm ái. Sản phẩm Apple Watch SE 2023 được tích hợp chip S8 SiP mạnh mẽ, thời gian sử dụng lên đến 18 giờ.', 25, 5890000, 50, 5.0, 125, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/2/a/2apple-watch-se-2023-40mm-vien-nhom-day-silicone-xanh-den-2.jpg'),
+(29, 'Đồng hồ Samsung Galaxy Watch6 44mm','Đồng-hồ-Samsung-Galaxy-Watch6-44mm' , 4,'dong-ho-thong-minh', 'Samsung', 'Samsung watch 6 44mm chính là sự quan tâm hàng đầu của những người dùng yêu thích các dòng sản phẩm đồng hồ thông minh hiện nay. Thế hệ thứ 6 đã kế thừa và cải tiến rất tốt phong cách thiết kế sang trọng cùng những tính năng cao cấp từ các thế hệ trước. Chính vì vậy mà đồng hồ lần này rất được kỳ vọng sẽ tiếp tục trở thành một siêu phẩm làm nức lòng người dùng.', 15, 4390000, 75, 4.5, 25, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/m/sm-r930_001_front_graphite_2.png'),
+(30, 'Màn hình Gaming ASUS TUF VG249Q3A 24 inch','Màn-hình-Gaming-ASUS-TUF-VG249Q3A-24-inch' , 7, 'man-hinh', 'Asus', 'Màn hình Gaming ASUS TUF 24 VG249Q3A 24 inch sở hữu kích thước lớn trên tấm nền Fast IPS mới với tần số quét lên đến 180Hz. Hơn hết màn hình Asus này còn có gam màu cực chuẩn 99% sRGB, nên không chỉ ưu việt cho chơi game mà còn xử lý công việc đồ họa mượt mà.', 10, 3490000, 15, 4.5, 50, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/man-hinh-gaming-asus-tuf-vg249q3a-24-inch_6_.png'),
 (31,
 	'Apple iPad mini (6th Gen) Wi-Fi, 2021',
 	'Apple-iPad-mini-(6th-Gen)-Wi-Fi-2021',
+    3,
+    'may-tinh-bang',
 	'Apple',
 	'iPad mini. Thiết kế màn hình toàn phần với màn hình Liquid Retina 8.3 inch.1 Chip A15 Bionic mạnh mẽ với Neural Engine. Camera trước Ultra Wide 12MP với tính năng Trung Tâm Màn Hình. Cổng kết nối USB-C. 5G siêu nhanh.2 Ghi chú, đánh dấu tài liệu hoặc nắm bắt ngay khi những ý tưởng lớn xuất hiện trong đầu với Apple Pencil (thế hệ thứ 2). Bút gắn kết bằng nam châm và sạc không dây.3
 
@@ -539,6 +579,8 @@ iPadOS 15 sở hữu sức mạnh độc đáo, dễ sử dụng và được th
 (32,
 	'Đồng hồ thông minh Garmin Forerunner 165',
 	'Đồng-hồ-thông-minh-Garmin-Forerunner-165',
+    4,
+    'dong-ho-thong-minh',
 	'Garmin',
 	'Đồng hồ Garmin Forerunner 165 là dòng sản phẩm được tối ưu để hỗ trợ việc luyện tập chuyên sâu và các vận động viên chuyên nghiệp. Với màn hình lớn, độ sáng cao cùng 5 phím bấm vật lý, người dùng sẽ luôn có được khả năng điều khiển chính xác, tiện lợi. Mẫu Garmin Forerunner chạy bộ của Garmin còn sở hữu thời lượng hoạt động lên tới 11 ngày để sử dụng thoải mái trong nhiều ngày mà không lo hết pin.
 
@@ -571,6 +613,8 @@ Ngay cả với các hoạt động thể thao yêu cầu thu thập dữ liệu
 (33,
 	'Đồng hồ Samsung Galaxy Watch6 44mm',
 	'Đồng-hồ-Samsung-Galaxy-Watch6-44mm',
+    4,
+    'dong-ho-thong-minh',
 	'Samsung',
 	'Samsung watch 6 44mm chính là sự quan tâm hàng đầu của những người dùng yêu thích các dòng sản phẩm đồng hồ thông minh hiện nay. Thế hệ thứ 6 đã kế thừa và cải tiến rất tốt phong cách thiết kế sang trọng cùng những tính năng cao cấp từ các thế hệ trước. Chính vì vậy mà đồng hồ lần này rất được kỳ vọng sẽ tiếp tục trở thành một siêu phẩm làm nức lòng người dùng.
 
@@ -592,6 +636,8 @@ Ngoài ra các tính năng từ cơ bản đến cao cấp để giúp bạn duy
 (34,
 	'Đồng hồ Samsung Galaxy Fit 3',
 	'Đồng-hồ-Samsung-Galaxy-Fit-3',
+    4,
+    'dong-ho-thong-minh',
 	'Samsung',
 	'Đồng hồ Samsung Galaxy Fit 3 thiết kế thanh mảnh, gọn gàng, màn hình AMOLED 1.6 inch, trọng lượng chỉ 36.8g, kháng nước 5ATM và bụi IP68 cùng viên pin 208mAh kéo dài dến 13 ngày ấn tượng tích hợp sạc không dây.
 
@@ -630,6 +676,8 @@ Trên đồng hồ Samsung Galaxy Fit 3, hãng cũng trang bị những cảm bi
 (35,
 	'Loa Bluetooth JBL Charge 51',
 	'Loa-Bluetooth-JBL-Charge-5',
+    10,
+    'loa',
 	'JBL',
 	'JBL Charge 5 – Siêu phẩm loa di động thế hệ mới, chất âm vượt trội ở mọi không gian
 Tiếp nối sự thành công của người tiền nhiệm, dòng loa huyền thoại loa JBL Charge 5 với sự thay đổi mạnh mẽ cả về thiết kế lẫn công nghệ âm thanh mang đến chất lượng âm thanh vượt trội dù là ngoài trời hay trong nhà. Là sản phẩm loa bluetooth đồng hành cùng bạn ở mọi cuộc vui.
@@ -654,6 +702,8 @@ JBL Charge 5 tích hợp công nghệ kết nối không dây Bluetooth 5.1 giú
 (36,
 	'Đồng hồ thông minh Garmin Forerunner 55',
 	'Đồng-hồ-thông-minh-Garmin-Forerunner-55',
+    4,
+    'dong-ho-thong-minh',
 	'Garmin',
 	'Đồng hồ thông minh Garmin Forerunner 55 – Em út nhà Garmin
 Bạn đã quá quen thuộc với các thiết bị đồng hồ đeo tay cao cấp đắt tiền của Garmin, nhưng lần này còn gì tuyệt hơn khi bạn được trải nghiệm toàn bộ tính năng hấp dẫn trên chiếc đồng hồ thông minh Garmin Forerunner 55 với sở hữu mức giá chỉ rơi vào từ 200 đô.
@@ -672,6 +722,8 @@ Ngoài ra, chiếc đồng hồ thông minh giá rẻ đến từ Garmin còn đ
 (37,
 	'Đồng hồ thông minh Garmin Forerunner 965',
 	'Đồng-hồ-thông-minh-Garmin-Forerunner-965',
+    4,
+    'dong-ho-thong-minh',
 	'Garmin',
 	'Là chiếc đồng hồ được thiết kế theo phong cách thể thao. Do dó, Garmin Forerunner 965 cực kỳ chú trọng vào việc tích hợp nhiều chế độ luyện tập đa dạng và viên pin với dung lượng “trâu” để mọi người sử dụng thoải mái hơn. Màn hình kích thước 1.4 inch cùng tấm nền AMOLED mang đến nhều không gian hiển thị và hình ảnh rực rõ, sắc nét. Cùng CellphoneS tìm hiểu thêm về chiếc đồng hồ Garmin vừa mới ra mắt này nhé.
 
@@ -704,6 +756,8 @@ Khung viền của đồng hồ được làm bằng chất liệu titan bền b
 (38,
 	'Màn hình ViewSonic VA2209-H 100Hz 22 inch',
 	'Màn-hình-ViewSonic-VA2209-H-100Hz-22-inch',
+    7,
+    'man-hinh',
 	'ViewSonic',
 	'Màn hình ViewSonic VA2209-H 100Hz 22 inch - Chất lượng hình ảnh đẹp, tối ưu cho nhiều mục đích
 Màn hình ViewSonic VA2209-H 100Hz 22 inch giúp bạn tận hưởng màu sắc phong phú với độ sáng ổn định đến từ mọi góc nhìn. Với nhiều công nghệ hỗ trợ tiên tiến khác, mẫu màn hình ViewSonic sẽ có mức tiêu thụ điện năng thấp để bạn thoải mái sử dụng cho nhiều nhu cầu khác nhau.
@@ -724,6 +778,8 @@ Bên cạnh đó, ViewSonic còn tích hợp thêm công nghệ Adaptive Sync đ
 (39,
 	'Samsung Galaxy Tab S9 Ultra 12GB 512GB',
 	'Samsung-Galaxy-Tab-S9-Ultra-12GB-512GB',
+    3,
+    'may-tinh-bang',
 	'Samsung',
 	'ĐẶC ĐIỂM NỔI BẬT
 Galaxy AI tiện ích - Hỗ trợ dịch, tóm tắt văn bản, chỉnh sửa ảnh thông minh và dịch âm thanh
@@ -740,6 +796,8 @@ Sáng tạo mọi lúc mọi nơi - Bút S Pen mới với độ trễ cực th�
 (40,
 	'Loa Bluetooth Sony SRS-XE200',
 	'Loa-Bluetooth-Sony-SRS-XE200',
+    10,
+    'loa',
 	'Sony',
 	'Loa Sony SRS-XE200 - Thiết kế nhỏ gọn, âm thanh vượt trội
 Loa bluetooth Sony SRX-XE200 nằm trong bộ sưu tập mới nhất của X-series với thiết kế và tính năng cải tiến. Kiểu dáng thiết bị gọn nhẹ nên bạn có thể mang đến bất cứ đâu để tận hưởng âm nhạc.

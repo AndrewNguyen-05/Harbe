@@ -14,7 +14,7 @@ public class CategoryDto {
     private String urlKey;
     private String thumbnailUrl;
     private Long parentId;
-    private boolean isPrimary;
+    //private boolean isPrimary;
 
     private Set<ProductDto> products;
 }

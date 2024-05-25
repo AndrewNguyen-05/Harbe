@@ -54,7 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         category.setName(categoryDto.getName());
         category.setThumbnailUrl(categoryDto.getThumbnailUrl());
-        category.setPrimary(categoryDto.isPrimary());
+        //category.setPrimary(categoryDto.isPrimary());
         category.setParentId(categoryDto.getParentId());
         category.setUrlKey(SlugConvert.convert(categoryDto.getName()));
 
