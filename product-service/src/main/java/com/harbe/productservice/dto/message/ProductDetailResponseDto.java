@@ -1,7 +1,7 @@
-package com.harbe.productservice.dto.model;
+package com.harbe.productservice.dto.message;
 
-import com.harbe.productservice.dto.message.CategoryResponseDto;
-import io.swagger.v3.oas.annotations.media.Schema;
+import com.harbe.productservice.dto.model.ProductOptionDto;
+import com.harbe.productservice.dto.model.ProductSpecificationDto;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -11,11 +11,8 @@ import lombok.Data;
 import java.util.List;
 import java.util.Set;
 
-@Schema(
-        description = "ProductDto Model Information"
-)
 @Data
-public class ProductDto {
+public class ProductDetailResponseDto {
     private Long id;
 
     @NotEmpty(message = "Name should not be empty")
@@ -43,6 +40,7 @@ public class ProductDto {
     private int quantitySold;
     private String productSlug;
     private String categoryUrl;
+    private CategoryResponseDto category;
 
     private List<ProductOptionDto> options;
     private Set<ProductSpecificationDto> specifications;

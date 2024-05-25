@@ -1,12 +1,13 @@
 package com.harbe.productservice.service.impl;
 
+import com.harbe.productservice.dto.mapper.*;
+import com.harbe.productservice.dto.message.CategoryResponseDto;
+import com.harbe.productservice.dto.message.ProductDetailResponseDto;
+import com.harbe.productservice.dto.message.ProductResponseDto;
+import com.harbe.productservice.dto.model.CategoryDto;
 import com.harbe.productservice.exception.HarbeAPIException;
 import com.harbe.productservice.exception.ResourceNotFoundException;
 import com.harbe.productservice.dto.response.ObjectResponse;
-import com.harbe.productservice.dto.mapper.OptionMapper;
-import com.harbe.productservice.dto.mapper.ProductMapper;
-import com.harbe.productservice.dto.mapper.ProductWithOptionForCartMapper;
-import com.harbe.productservice.dto.mapper.SpecificationMapper;
 import com.harbe.productservice.dto.model.ProductDto;
 import com.harbe.productservice.dto.model.ProductOptionDto;
 import com.harbe.productservice.dto.response.ProductWithOptionForCartDto;
@@ -41,6 +42,7 @@ public class ProductServiceImpl implements ProductService {
 
     //Mappers
     private ProductMapper productMapper;
+    private CategoryMapper categoryMapper;
     private OptionMapper optionMapper;
     private SpecificationMapper specificationMapper;
     private ProductWithOptionForCartMapper productWithOptionMapper;
@@ -95,9 +97,6 @@ public class ProductServiceImpl implements ProductService {
         // Lay ra gia tri (content) cua page
         List<Product> products = pages.getContent();
 
-        for(Product product : products){
-
-        }
 
         // Ep kieu sang dto
         List<ProductDto> content = products.stream().map(product -> productMapper.mapToDto(product)).collect(Collectors.toList());
@@ -114,12 +113,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto getProductById(Long id) {
+    public ProductDetailResponseDto getProductById(Long id) {
         Product product = this.productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product", "id", id));
 
-        ProductDto productDto = productMapper.mapToDto(product);
+        Category category = this.categoryRepository.findByUrlKey(product.getCategoryUrl());
+        CategoryResponseDto categoryResponseDto = this.categoryMapper.mapToResponseDto(category);
 
-        return productDto;
+        ProductDetailResponseDto productDetailResponseDto = productMapper.mapToResponseDetailDto(product);
+        productDetailResponseDto.setCategory(categoryResponseDto);
+        return productDetailResponseDto;
     }
 
     @Override

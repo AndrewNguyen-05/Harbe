@@ -39,7 +39,8 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDto getCategoryById(Long id) {
         Category category = this.categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category", "id", id));
 
-        return this.categoryMapper.mapToDto(category);
+        CategoryDto categoryDto = this.categoryMapper.mapToDto(category);
+        return categoryDto;
     }
 
     @Override

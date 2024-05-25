@@ -1,5 +1,7 @@
 package com.harbe.productservice.controller;
 
+import com.harbe.productservice.dto.message.ProductDetailResponseDto;
+import com.harbe.productservice.dto.message.ProductResponseDto;
 import com.harbe.productservice.dto.response.ObjectResponse;
 import com.harbe.productservice.utils.AppConstants;
 import com.harbe.productservice.dto.model.ProductDto;
@@ -49,7 +51,7 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public ResponseEntity<ProductDto> getProductById(@PathVariable(name = "productId") Long id){
+    public ResponseEntity<ProductDetailResponseDto> getProductById(@PathVariable(name = "productId") Long id){
         return new ResponseEntity<>(this.productService.getProductById(id), HttpStatus.OK);
     }
     @PutMapping("/{productId}")
