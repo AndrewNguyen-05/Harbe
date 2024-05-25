@@ -1,5 +1,6 @@
 package com.harbe.productservice.service.impl;
 
+import com.harbe.productservice.dto.message.CategoryResponseDto;
 import com.harbe.productservice.exception.HarbeAPIException;
 import com.harbe.productservice.exception.ResourceNotFoundException;
 import com.harbe.productservice.dto.mapper.CategoryMapper;
@@ -42,10 +43,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryDto> getAllCategories() {
+    public List<CategoryResponseDto> getAllCategories() {
         List<Category> categories = this.categoryRepository.findAll();
 
-        return categories.stream().map(category -> this.categoryMapper.mapToDto(category)).collect(Collectors.toList());
+        return categories.stream().map(category -> this.categoryMapper.mapToResponseDto(category)).collect(Collectors.toList());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.harbe.productservice.controller;
 
+import com.harbe.productservice.dto.message.CategoryResponseDto;
 import com.harbe.productservice.dto.model.CategoryDto;
 import com.harbe.productservice.dto.model.CreateCategoryDto;
 import com.harbe.productservice.service.CategoryService;
@@ -27,7 +28,7 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDto>> getAllCategories(){
+    public ResponseEntity<List<CategoryResponseDto>> getAllCategories(){
         return new ResponseEntity<>(this.categoryService.getAllCategories(), HttpStatus.OK);
     }
 

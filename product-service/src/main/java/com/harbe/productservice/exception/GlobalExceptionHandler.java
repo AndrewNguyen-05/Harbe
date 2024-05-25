@@ -33,7 +33,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
-    //Not match resource (eg: product doesnt belong to category, v.v..)
     @ExceptionHandler(HarbeAPIException.class)
     public ResponseEntity<ErrorDetails> handleResourceNotMatchException(HarbeAPIException ex,
                                                                         WebRequest webRequest){
