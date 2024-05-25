@@ -49,9 +49,6 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductOption> options = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Seller seller;
-
     // Cac ham xu ly logic cua product option
     public void addOption(ProductOption option){
         option.setProduct(this);
