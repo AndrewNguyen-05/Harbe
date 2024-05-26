@@ -4,6 +4,7 @@ import com.harbe.authservice.dto.model.UserDto;
 import com.harbe.authservice.service.UserService;
 import com.harbe.authservice.dto.response.ObjectResponse;
 import com.harbe.authservice.utils.AppConstants;
+import com.harbe.authservice.utils.CustomHeaders;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -52,6 +53,11 @@ public class UserController {
         this.userService.deleteUser(id);
 
         return new ResponseEntity<>("Delete user successfully!", HttpStatus.OK);
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<UserDto> getUserProfile(@RequestHeader(CustomHeaders.X_AUTH_USER_ID) Long id){
+        return new ResponseEntity<>(this.userService.getUserProfile(id), HttpStatus.OK);
     }
 
 }

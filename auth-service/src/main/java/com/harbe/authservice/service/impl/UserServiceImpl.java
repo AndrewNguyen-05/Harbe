@@ -120,4 +120,11 @@ public class UserServiceImpl implements UserService {
 
         this.userRepository.delete(user);
     }
+
+    @Override
+    public UserDto getUserProfile(Long userId){
+        User user = this.userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
+
+        return this.userMapper.mapToDto(user);
+    }
 }
