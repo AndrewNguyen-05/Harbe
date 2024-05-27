@@ -1,6 +1,7 @@
 package com.harbe.orderservice.service.impl;
 
 import com.harbe.orderservice.constant.PaypalConstants;
+import com.harbe.orderservice.dto.dataOut.CancelOrderResult;
 import com.harbe.orderservice.dto.dataOut.CreateOrderResultDto;
 import com.harbe.orderservice.dto.dataOut.ListOrderDto;
 import com.harbe.orderservice.dto.dataOut.OrderDto;
@@ -11,20 +12,29 @@ import com.harbe.orderservice.dto.dataIn.OrderBasicInfoDto;
 import com.harbe.orderservice.dto.dataIn.ProductDto;
 import com.harbe.orderservice.dto.mapper.OrderMapper;
 import com.harbe.orderservice.entity.Order;
+import com.harbe.orderservice.exception.HarbeAPIException;
+import com.harbe.orderservice.exception.OrderExceptionHandler;
 import com.harbe.orderservice.exception.PaypalAccessTokenException;
+import com.harbe.orderservice.exception.ResourceNotFoundException;
 import com.harbe.orderservice.repository.OrderRepository;
 import com.harbe.orderservice.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.aspectj.weaver.ast.Or;
 import org.json.JSONObject;
 import org.springframework.cglib.core.Local;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import com.harbe.orderservice.utils.CustomHeaders;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import reactor.core.publisher.Mono;
 
 
 import java.time.LocalDateTime;
@@ -76,6 +86,7 @@ public class OrderServiceImpl implements OrderService {
         order.setAddressId(orderBasicInfoDto.getAddressId());
         order.setUserId(userId);
 
+        Order orderResult = null;
         switch (orderBasicInfoDto.getPaymentMethod()) {
             case "PAYPAL" : {
                 if (orderBasicInfoDto.getReturnUrl().isBlank() || orderBasicInfoDto.getCancelUrl().isBlank()){
@@ -92,12 +103,15 @@ public class OrderServiceImpl implements OrderService {
                         .collect(Collectors.toList())
                         .get(0).getHref());
                 cord.setResult("PENDING_PAYPAL");
+                order.setPaypalId(pocd.id);
+                orderResult = orderRepository.save(order);
             }
             break;
             case "COD" : {
                 order.setPaymentMethod("COD");
                 order.setPaymentStatus("PENDING");
                 cord.setResult("CREATED");
+                orderResult = orderRepository.save(order);
             }
             break;
             default: {
@@ -106,10 +120,52 @@ public class OrderServiceImpl implements OrderService {
             }
         }
 
-        Order orderResult = orderRepository.save(order);
         cord.setOrderDto(orderMapper.mapToDto(orderResult));
 
         return cord;
+    }
+
+    @Override
+    public CreateOrderResultDto capturePaypalOrder(long orderId) {
+        CreateOrderResultDto cord = new CreateOrderResultDto();
+
+        Order order = orderRepository.findById(orderId).orElseThrow(
+                () -> new ResourceNotFoundException("Order", "Id", orderId));
+        if (order.getPaypalId() == null) {
+            cord.setResult("FAILED");
+            return cord;
+        }
+        PaypalOrderCreateDto pocd = webClient.post()
+                .uri(PaypalConstants.BASE_URI + "/v2/checkout/orders/" +
+                        order.getPaypalId() + "/capture")
+                .contentType(MediaType.APPLICATION_JSON)
+                .headers(header -> header.setBearerAuth(getAccessToken()))
+                .retrieve()
+                .onStatus(HttpStatusCode::is4xxClientError, clientResponse ->
+                        Mono.error( new HarbeAPIException(HttpStatus.FORBIDDEN, "Can't capture order") )
+                )
+                .bodyToMono(PaypalOrderCreateDto.class)
+                .block();
+
+        if (pocd.status.equals("COMPLETED")){
+            order.setPaymentStatus("COMPLETED");
+            orderRepository.save(order);
+            cord.setOrderDto(orderMapper.mapToDto(order));
+            cord.setResult("CAPTURED");
+        }
+        else {
+            cord.setResult("FAILED");
+        }
+        return cord;
+    }
+
+    @Override
+    public CancelOrderResult cancelCapturePaypal(long orderId) {
+        orderRepository.deleteById(orderId);
+        CancelOrderResult cor = new CancelOrderResult();
+        cor.setMessage("Canceled");
+        cor.setSuccess(true);
+        return cor;
     }
 
     public PaypalOrderCreateDto createPaypalOrder(OrderBasicInfoDto orderBasicInfoDto, double vndValue) {
@@ -174,27 +230,51 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ListOrderDto getAllOrder(int pageNo, int pageSize, String sortBy, String sortDir) {
-        return null;
+        Page<Order> page = orderRepository.findAll(PageRequest.of(pageNo, pageSize,
+                sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
+                ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending()));
+        ListOrderDto lod = new ListOrderDto();
+        lod.setOrderList(page.getContent().stream()
+                        .map(order -> orderMapper.mapToDto(order))
+                        .collect(Collectors.toList()));
+        lod.setLast(page.isLast());
+        lod.setPageNo(page.getNumber());
+        lod.setPageSize(page.getSize());
+        lod.setTotalElements(page.getTotalElements());
+        lod.setTotalPages(page.getTotalPages());
+        return lod;
     }
 
     @Override
     public OrderDto getOrderById(long id) {
-        return null;
+        Order order = orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order", "id", id));
+        return orderMapper.mapToDto(order);
     }
 
     @Override
     public OrderDto updateOrder(OrderDto orderDto, long id) {
-        return null;
+        Order order = orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order", "id", id));
+        order.setTotal(orderDto.getTotal());
+        order.setStatus(orderDto.getStatus());
+        order.setPaymentMethod(orderDto.getPaymentMethod());
+        order.setPaymentStatus(orderDto.getPaymentStatus());
+        order.setShippingFee(orderDto.getShippingFee());
+        order.setNote(orderDto.getNote());
+        order.setCreatedAt(orderDto.getCreatedAt());
+        order.setAddressId(orderDto.getAddressId());
+        order.setUserId(orderDto.getUserId());
+        order.setPaypalId(orderDto.getPaypalId());
+        Order orderResult = orderRepository.save(order);
+        return orderMapper.mapToDto(orderResult);
     }
 
     @Override
     public String cancelOrderById(long id) {
-        return null;
-    }
-
-    @Override
-    public String checkoutOrderById(long id) {
-        return null;
+        Order order = orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order", "id", id));
+        order.setStatus("CANCELED");
+        Order orderResult = orderRepository.save(order);
+        return "Order canceled successfully";
     }
 
     private String getAccessToken(){

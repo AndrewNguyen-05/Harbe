@@ -30,4 +30,5 @@ public class Order {
     private LocalDateTime createdAt;
     private long addressId;
     private long userId;
+    private String paypalId;
 }
