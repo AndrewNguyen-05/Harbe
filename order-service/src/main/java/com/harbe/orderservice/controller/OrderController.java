@@ -8,8 +8,13 @@ import com.harbe.orderservice.utils.AppConstants;
 import com.harbe.orderservice.utils.CustomHeaders;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,9 +23,13 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
      private OrderService orderService;
 
+
+     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
+
      @PostMapping
      public ResponseEntity<CreateOrderResultDto> createOrder(@RequestHeader(CustomHeaders.X_AUTH_USER_ID) long userId,
                                                              @RequestBody OrderBasicInfoDto orderBasicInfoDto) {
+         logger.info("Example log from {}", OrderController.class.getSimpleName());
          return new ResponseEntity<>(orderService.createOrder(userId, orderBasicInfoDto), HttpStatus.OK);
      }
 
