@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  harbe-prometheus:
+    container_name: harbe-prometheus
+    image: prom/prometheus
+    restart: always
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  harbe-grafana:
+    container_name: harbe-grafana
+    image: grafana/grafana
+    ports:
+      - "3100:3000"
+
+  harbe-redis:
+    container_name: harbe-redis
+    image: redis
+    ports:
+      - "6379:6379"
+
+  harbe-zipkin:
+    container_name: harbe-zipkin
+    image: openzipkin/zipkin
+    restart: unless-stopped
+    ports:
+      - "9411:9411"
+
+  harbe-rabbitmq:
+    container_name: harbe-rabbitmq
+    image: rabbitmq
+    ports:
+      - "5672:5672"

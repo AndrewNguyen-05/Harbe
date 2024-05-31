@@ -7,6 +7,8 @@ import com.harbe.cartservice.dto.model.ProductDto;
 import com.harbe.cartservice.service.CartRedisService;
 import com.harbe.cartservice.service.base.impl.BaseRedisServiceImpl;
 import com.harbe.cartservice.exception.ResourceNotFoundException;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -162,6 +164,8 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
         return productList;
     }
 
+    //@CircuitBreaker(name = "${spring.application.name}", fallbackMethod = "getDefaultProduct")
+    @Retry(name = "${spring.application.name}", fallbackMethod = "getDefaultProduct")
     private ProductDto getProductById(String id, boolean isProductItem) {
         // Kiem tra, neu la product_item thi goi toi duong dan lay product dua tren optionId,
         // nguoc lai se la goi product theo id nhu bth
@@ -194,4 +198,19 @@ public class CartRedisServiceImpl extends BaseRedisServiceImpl implements CartRe
         }
     }
 
+
+    private ProductDto getDefaultProduct(String id, boolean isProductItem) {
+        // Kiem tra, neu la product_item thi goi toi duong dan lay product dua tren optionId,
+        // nguoc lai se la goi product theo id nhu bth
+        ProductDto productDto = new ProductDto();
+        productDto.setName("Default product");
+        productDto.setQuantity(1);
+        productDto.setId((long) -1);
+        productDto.setOption(new ArrayList<>());
+        productDto.setPrice(999999);
+        productDto.setDiscountRate(0);
+        productDto.setThumbnailUrl("https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_61_1_.png");
+
+        return productDto;
+    }
 }
