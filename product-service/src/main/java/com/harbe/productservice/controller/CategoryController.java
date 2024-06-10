@@ -3,7 +3,9 @@ package com.harbe.productservice.controller;
 import com.harbe.productservice.dto.message.CategoryResponseDto;
 import com.harbe.productservice.dto.model.CategoryDto;
 import com.harbe.productservice.dto.model.CreateCategoryDto;
+import com.harbe.productservice.dto.response.ObjectResponse;
 import com.harbe.productservice.service.CategoryService;
+import com.harbe.productservice.utils.AppConstants;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,8 +30,13 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryResponseDto>> getAllCategories(){
-        return new ResponseEntity<>(this.categoryService.getAllCategories(), HttpStatus.OK);
+    public ResponseEntity<ObjectResponse<CategoryResponseDto>> getAllCategories(
+            @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = AppConstants.DEFAULT_SORT_BY, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = AppConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir
+    ){
+        return new ResponseEntity<>(this.categoryService.getAllCategories(pageNo, pageSize, sortBy, sortDir), HttpStatus.OK);
     }
 
     @GetMapping("/{categoryId}")

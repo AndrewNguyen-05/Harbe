@@ -9,5 +9,5 @@ import java.util.Date;
 public class NotiDto {
     private String message;
     private String title;
-    private Instant timestamp;
+    private Date timestamp;
 }

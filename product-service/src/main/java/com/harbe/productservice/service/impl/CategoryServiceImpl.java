@@ -1,6 +1,7 @@
 package com.harbe.productservice.service.impl;
 
 import com.harbe.productservice.dto.message.CategoryResponseDto;
+import com.harbe.productservice.dto.response.ObjectResponse;
 import com.harbe.productservice.exception.HarbeAPIException;
 import com.harbe.productservice.exception.ResourceNotFoundException;
 import com.harbe.productservice.dto.mapper.CategoryMapper;
@@ -12,6 +13,10 @@ import com.harbe.productservice.repository.CategoryRepository;
 import com.harbe.productservice.service.CategoryService;
 import com.harbe.productservice.utils.SlugConvert;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,10 +49,34 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryResponseDto> getAllCategories() {
-        List<Category> categories = this.categoryRepository.findAll();
+    public ObjectResponse<CategoryResponseDto> getAllCategories(int pageNo, int pageSize, String sortBy, String sortDir) {
+        // Tao sort
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
+                ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
 
-        return categories.stream().map(category -> this.categoryMapper.mapToResponseDto(category)).collect(Collectors.toList());
+        // Tao 1 pageable instance
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        // Tao 1 mang cac trang product su dung find all voi tham so la pageable
+        Page<Category> pages = this.categoryRepository.findAll(pageable);
+
+        // Lay ra gia tri (content) cua page
+        List<Category> categories = pages.getContent();
+
+
+        // Ep kieu sang dto
+        List<CategoryResponseDto> content = categories.stream().map(category -> categoryMapper.mapToResponseDto(category)).collect(Collectors.toList());
+
+        // Gan gia tri (content) cua page vao ProductResponse de tra ve
+        ObjectResponse<CategoryResponseDto> response = new ObjectResponse();
+        response.setContent(content);
+        response.setTotalElements(pages.getTotalElements());
+        response.setPageNo(pages.getNumber());
+        response.setPageSize(pages.getSize());
+        response.setLast(pages.isLast());
+
+        return response;
     }
 
     @Override
