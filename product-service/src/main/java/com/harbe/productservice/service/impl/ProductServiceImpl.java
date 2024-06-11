@@ -234,4 +234,13 @@ public class ProductServiceImpl implements ProductService {
         productWithOptionForCartDto.setOption(optionDtoList);
         return productWithOptionForCartDto;
     }
+
+    @Override
+    public List<ProductDto> searchProduct(String name){
+        List<Product> products = this.productRepository.searchProductByName(name);
+
+        List<ProductDto> result = products.stream().map(product -> productMapper.mapToDto(product)).collect(Collectors.toList());
+
+        return result;
+    }
 }

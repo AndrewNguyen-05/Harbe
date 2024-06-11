@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(
         name = "Product",
         description = "REST APIs for Product"
@@ -75,5 +77,8 @@ public class ProductController {
         return new ResponseEntity<>(this.productService.getProductByProductOptionId(idLists), HttpStatus.OK);
     }
 
-
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductDto>> searchProduct(@RequestParam("name") String name){
+        return new ResponseEntity<>(this.productService.searchProduct(name), HttpStatus.OK);
+    }
 }
