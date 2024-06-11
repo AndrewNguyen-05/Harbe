@@ -16,5 +16,5 @@ public interface ProductService {
     void deleteProduct(Long productId);
 
     ProductWithOptionForCartDto getProductByProductOptionId(String productOptionId);
-    List<ProductDto> searchProduct(String name);
+    ObjectResponse<ProductDto> searchProduct(String name, int pageNo, int pageSize, String sortBy, String sortDir);
 }

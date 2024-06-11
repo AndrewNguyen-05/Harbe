@@ -236,11 +236,33 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDto> searchProduct(String name){
-        List<Product> products = this.productRepository.searchProductByName(name);
+    public ObjectResponse<ProductDto> searchProduct(String name, int pageNo, int pageSize, String sortBy, String sortDir){
+        // Tao sort
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
+                ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
 
-        List<ProductDto> result = products.stream().map(product -> productMapper.mapToDto(product)).collect(Collectors.toList());
+        // Tao 1 pageable instance
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
 
-        return result;
+        // Tao 1 mang cac trang product su dung find all voi tham so la pageable
+        Page<Product> pages = this.productRepository.searchProductByName(name, pageable);
+
+        // Lay ra gia tri (content) cua page
+        List<Product> products = pages.getContent();
+
+
+        // Ep kieu sang dto
+        List<ProductDto> content = products.stream().map(product -> productMapper.mapToDto(product)).collect(Collectors.toList());
+
+        // Gan gia tri (content) cua page vao ProductResponse de tra ve
+        ObjectResponse<ProductDto> response = new ObjectResponse();
+        response.setContent(content);
+        response.setTotalElements(pages.getTotalElements());
+        response.setPageNo(pages.getNumber());
+        response.setPageSize(pages.getSize());
+        response.setLast(pages.isLast());
+
+        return response;
     }
 }
