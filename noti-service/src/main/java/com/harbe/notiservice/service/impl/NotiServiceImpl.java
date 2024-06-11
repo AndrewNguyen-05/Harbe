@@ -125,4 +125,34 @@ public class NotiServiceImpl implements NotiService {
         return notiDto;
     }
 
+    @Override
+    public ObjectResponse<NotiDto> searchNoti(String title, int pageNo, int pageSize, String sortBy, String sortDir){
+        // Tao sort
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
+                ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        // Tao 1 pageable instance
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        // Tao 1 mang cac trang product su dung find all voi tham so la pageable
+        Page<Notification> pages = this.notiRepository.searchByTitle(title, pageable);
+
+        // Lay ra gia tri (content) cua page
+        List<Notification> notifications = pages.getContent();
+
+
+        // Ep kieu sang dto
+        List<NotiDto> content = notifications.stream().map(notification -> notiMapper.mapToDto(notification)).collect(Collectors.toList());
+
+        // Gan gia tri (content) cua page vao ProductResponse de tra ve
+        ObjectResponse<NotiDto> response = new ObjectResponse();
+        response.setContent(content);
+        response.setTotalElements(pages.getTotalElements());
+        response.setPageNo(pages.getNumber());
+        response.setPageSize(pages.getSize());
+        response.setLast(pages.isLast());
+
+        return response;
+    }
 }

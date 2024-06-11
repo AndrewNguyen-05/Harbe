@@ -127,4 +127,35 @@ public class UserServiceImpl implements UserService {
 
         return this.userMapper.mapToDto(user);
     }
+
+    @Override
+    public ObjectResponse<UserDto> searchUser(String name, int pageNo, int pageSize, String sortBy, String sortDir){
+        // Tao sort
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
+                ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        // Tao 1 pageable instance
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        // Tao 1 mang cac trang product su dung find all voi tham so la pageable
+        Page<User> pages = this.userRepository.searchUserByName(name, pageable);
+
+        // Lay ra gia tri (content) cua page
+        List<User> users = pages.getContent();
+
+
+        // Ep kieu sang dto
+        List<UserDto> content = users.stream().map(user -> userMapper.mapToDto(user)).collect(Collectors.toList());
+
+        // Gan gia tri (content) cua page vao ProductResponse de tra ve
+        ObjectResponse<UserDto> response = new ObjectResponse();
+        response.setContent(content);
+        response.setTotalElements(pages.getTotalElements());
+        response.setPageNo(pages.getNumber());
+        response.setPageSize(pages.getSize());
+        response.setLast(pages.isLast());
+
+        return response;
+    }
 }

@@ -11,4 +11,5 @@ public interface UserService {
     UserDto updateUser(UserDto userDto, Long userId);
     void deleteUser(Long userId);
     UserDto getUserProfile(Long userId);
+    ObjectResponse<UserDto> searchUser(String name, int pageNo, int pageSize, String sortBy, String sortDir);
 }

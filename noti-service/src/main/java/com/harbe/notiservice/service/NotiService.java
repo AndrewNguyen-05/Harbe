@@ -11,4 +11,6 @@ public interface NotiService {
     NotiDto createNotification(NotiResponseDto notiDto);
     NotiDto updateNotification(long notiId, NotiResponseDto notiDto);
     void deleteNotification(long id);
+    ObjectResponse<NotiDto> searchNoti(String title, int pageNo, int pageSize, String sortBy, String sortDir);
+
 }
