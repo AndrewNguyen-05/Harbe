@@ -74,7 +74,7 @@ public class OrderServiceImpl implements OrderService {
 
         double value = 0;
         for (ProductDto productDto: listProductInCart) {
-            value += productDto.getPrice() * productDto.getQuantity();
+            value += productDto.getPrice() * ((100 - productDto.getDiscountRate()) / 100) * productDto.getQuantity();
         }
         value = Math.ceil(value);
 
