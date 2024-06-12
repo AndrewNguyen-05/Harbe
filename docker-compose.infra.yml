@@ -3,7 +3,6 @@ services:
   harbe-prometheus:
     container_name: harbe-prometheus
     image: prom/prometheus
-    restart: always
     extra_hosts:
       - host.docker.internal:host-gateway
     command:
