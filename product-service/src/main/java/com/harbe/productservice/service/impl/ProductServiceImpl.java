@@ -107,6 +107,7 @@ public class ProductServiceImpl implements ProductService {
         response.setTotalElements(pages.getTotalElements());
         response.setPageNo(pages.getNumber());
         response.setPageSize(pages.getSize());
+        response.setTotalPages(pages.getTotalPages());
         response.setLast(pages.isLast());
 
         return response;
@@ -261,6 +262,7 @@ public class ProductServiceImpl implements ProductService {
         response.setTotalElements(pages.getTotalElements());
         response.setPageNo(pages.getNumber());
         response.setPageSize(pages.getSize());
+        response.setTotalPages(pages.getTotalPages());
         response.setLast(pages.isLast());
 
         return response;

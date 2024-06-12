@@ -77,6 +77,7 @@ public class CategoryServiceImpl implements CategoryService {
         response.setPageNo(pages.getNumber());
         response.setPageSize(pages.getSize());
         response.setLast(pages.isLast());
+        response.setTotalPages(pages.getTotalPages());
 
         return response;
     }
@@ -130,6 +131,7 @@ public class CategoryServiceImpl implements CategoryService {
         response.setPageNo(pages.getNumber());
         response.setPageSize(pages.getSize());
         response.setLast(pages.isLast());
+        response.setTotalPages(pages.getTotalPages());
 
         return response;
     }

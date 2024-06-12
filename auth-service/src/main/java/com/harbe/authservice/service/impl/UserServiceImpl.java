@@ -74,6 +74,7 @@ public class UserServiceImpl implements UserService {
         response.setPageSize(pages.getSize());
         response.setTotalElements(pages.getTotalElements());
         response.setLast(pages.isLast());
+        response.setTotalPages(pages.getTotalPages());
 
         return response;
     }
@@ -155,6 +156,7 @@ public class UserServiceImpl implements UserService {
         response.setPageNo(pages.getNumber());
         response.setPageSize(pages.getSize());
         response.setLast(pages.isLast());
+        response.setTotalPages(pages.getTotalPages());
 
         return response;
     }
