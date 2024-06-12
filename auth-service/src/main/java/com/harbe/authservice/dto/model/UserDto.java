@@ -34,7 +34,7 @@ public class UserDto {
     private String password;
 
     @NotEmpty(message = "Số điện thoại không được bỏ trống")
-    @Size(min = 9, message = "Số điện thoại phải có độ dài tối thiểu là 93 ký tự")
+    @Size(min = 9, message = "Số điện thoại phải có độ dài tối thiểu là 9 ký tự")
     private String phone;
 
     private String gender;

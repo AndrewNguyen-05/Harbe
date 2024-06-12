@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -27,4 +29,11 @@ public class RegisterDto {
     @Size(min = 3, message = "Password must contain at least 3 characters")
     @NotEmpty(message = "Password can not be empty")
     private String password;
+
+    @NotEmpty(message = "Số điện thoại không được bỏ trống")
+    @Size(min = 9, message = "Số điện thoại phải có độ dài tối thiểu là 9 ký tự")
+    private String phone;
+
+    private String gender;
+    private Date dateOfBirth;
 }
