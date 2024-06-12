@@ -29,7 +29,6 @@ public class Address {
     private String ward;
     private String address;
     private String addressType;
-    private boolean isDefault;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
