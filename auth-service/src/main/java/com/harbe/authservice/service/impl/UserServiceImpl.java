@@ -2,7 +2,9 @@ package com.harbe.authservice.service.impl;
 
 import com.harbe.authservice.dto.mapper.UserMapper;
 import com.harbe.authservice.dto.model.UserDto;
+import com.harbe.authservice.entity.Role;
 import com.harbe.authservice.entity.User;
+import com.harbe.authservice.repository.RoleRepository;
 import com.harbe.authservice.repository.UserRepository;
 import com.harbe.authservice.service.UserService;
 import com.harbe.authservice.exception.HarbeAPIException;
@@ -17,13 +19,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
     private UserMapper userMapper;
     private PasswordEncoder passwordEncoder;
 
@@ -44,6 +49,11 @@ public class UserServiceImpl implements UserService {
         User newUser = this.userMapper.mapToEntity(userDto);
 
         newUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+
+        Set<Role> roles = new HashSet<>();
+        Role userRole = this.roleRepository.findByName("USER").get();
+        roles.add(userRole);
+        newUser.setRoles(roles);
 
         User userResponse = this.userRepository.save(newUser);
         return this.userMapper.mapToDto(userResponse);
@@ -109,6 +119,9 @@ public class UserServiceImpl implements UserService {
         user.setUsername(userDto.getUsername());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setGender(userDto.getGender());
+        user.setPhone(userDto.getPhone());
+        user.setDateOfBirth(userDto.getDateOfBirth());
 
         this.userRepository.save(user);
 
