@@ -48,13 +48,20 @@ Link to Frontend repo: [Harbe FE](https://github.com/AndrewNguyen-05/Harbe-FE)
 
 
 ### Technologies and Framework
-- Java 17
-- Spring Boot 3: Authorization Server (OAuth 2), Statemachine ...
-- Spring Cloud Gateway, Open Feign, Stream ...
-- Elastic stack: Elasticsearch, Logstash, Kibana, Filebeat
-- Grafana stack: Prometheus, Grafana
-- Zipkin
-- Redis
+- Back-end
+  - Java 17
+  - Spring Boot 3: Authorization Server (OAuth 2), Statemachine ...
+  - Spring Cloud Gateway, Open Feign, Stream ...
+  - Elastic stack: Elasticsearch, Logstash, Kibana, Filebeat
+  - Grafana stack: Prometheus, Grafana
+  - Zipkin
+  - Redis
+- Front-end
+  - NextJS 14
+  - ReactJS
+  - TailwindCSS
+  - RadixUI
+  - ShadcnUI
 
 ### Demo
 Some of the pictures of this Application
