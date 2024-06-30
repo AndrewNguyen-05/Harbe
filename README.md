@@ -6,8 +6,8 @@ Link to Frontend repo: [Harbe FE](https://github.com/AndrewNguyen-05/Harbe-FE)
 
 ### Contributors
 
-- Nguyen Van Hoang Anh - 21520144@gm.uit.edu.vn - [Github](https://github.com/AndrewNguyen-05)
-- Hoang Duc Manh - 21520062@gm.uit.edu.vn - [Github](https://github.com/Marowota)
+- Nguyen Van Hoang Anh - 21520144@gm.uit.edu.vn - [Github](https://github.com/AndrewNguyen-05) - [Facebook](https://www.facebook.com/andrew.nguyen0505/)
+- Hoang Duc Manh - 21520062@gm.uit.edu.vn - [Github](https://github.com/Marowota) - [Facebook](https://www.facebook.com/hoangducmanh254)
 
 ### Supervisors
 
