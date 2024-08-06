@@ -16,7 +16,7 @@ Link to Frontend repo: [Harbe FE](https://github.com/AndrewNguyen-05/Harbe-FE)
 ### Description
 
 - Harbe is an ecommerce system utilizing microservices architecture, using NextJS, ReactJS, TailwindCSS for frontend.
-- I use SpringBoot to for services, Spring Cloud to make gateway, config server for microservices, Resilience4j to handle error, RabbitMQ to sync between services and Zipkin for tracing.
+- I use SpringBoot to build services, Spring Cloud to build gateway, config server for microservices, Resilience4j to handle error, RabbitMQ to sync between services and Zipkin for tracing.
 - The database I choose for this project is MySQL and Redis for cart service.
 - You can see the report [here](https://drive.google.com/file/d/1MxEw0X9wGU1nWqVVXuw1AJ_YOFRNLfJf/view?usp=sharing)
 
