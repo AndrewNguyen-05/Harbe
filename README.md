@@ -79,7 +79,7 @@ Some of the pictures of this Application
 </div>
 
 <div align="center">
-  <img src="app-resources/Picture4.png", alt="Admin product" width="600" />
+  <img src="app-resources/Picture4.jpg", alt="Admin product" width="600" />
   <p><i>Admin product Screen</i></p>
 </div>
 
@@ -96,7 +96,7 @@ Some of the pictures of this Application
 </div>
 
 <div align="center">
-  <img src="app-resources/Picture10.png6", alt="Grafana" width="600" />
+  <img src="app-resources/Picture10.png", alt="Grafana" width="600" />
   <p><i>Grafana Screen</i></p>
 </div>
 
