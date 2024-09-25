@@ -39,6 +39,11 @@ Link to Frontend repo: [Harbe FE](https://github.com/AndrewNguyen-05/Harbe-FE)
   <p><i>General Usecase Diagram</i></p>
 </div>
 
+<div align="center">
+  <img src="app-resources/Picture20.png", alt="Class Diagram" />
+  <p><i>Class Diagram</i></p>
+</div>
+
 - My application also implements Grafana and Prometheus to monitor, this is the general flow of Grafana and Prometheus:
 
 <div align="center">
