@@ -17,6 +17,8 @@
         <module>noti-service</module>
         <module>order-service</module>
         <module>config-server</module>
+        <module>notification-service</module>
+        <module>inventory-service</module>
     </modules>
 
     <properties>
