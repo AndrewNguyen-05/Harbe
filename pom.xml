@@ -19,6 +19,7 @@
         <module>config-server</module>
         <module>notification-service</module>
         <module>inventory-service</module>
+        <module>product-javaEE-service</module>
     </modules>
 
     <properties>
