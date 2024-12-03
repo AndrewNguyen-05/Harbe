@@ -1,11 +1,11 @@
-package com.harbe.notificationservice;
+package com.harbe.notificationservice.controller;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import org.springframework.stereotype.Component;
 
 @Component
-@Path("/hello")
+@Path("/jaxrs/hello")
 public class HelloWorldEndpoint {
     @GET
     public String message() {

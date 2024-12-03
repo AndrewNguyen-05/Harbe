@@ -1,4 +1,4 @@
-package com.harbe.notificationservice;
+package com.harbe.inventoryservice.config;
 
 import com.netflix.discovery.AbstractDiscoveryClientOptionalArgs;
 import com.netflix.discovery.shared.transport.jersey.TransportClientFactories;
