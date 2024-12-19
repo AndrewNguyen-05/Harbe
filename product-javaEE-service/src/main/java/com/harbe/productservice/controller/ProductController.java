@@ -72,7 +72,7 @@ public class ProductController {
 
     @POST
     @Path("/product-options")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
     public Response findProductByProductOptionId(String idLists) {
         ProductWithOptionForCartDto productOptions = this.productService.getProductByProductOptionId(idLists);
