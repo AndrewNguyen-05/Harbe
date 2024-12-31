@@ -20,6 +20,7 @@ Link to Frontend repo: [Harbe FE](https://github.com/AndrewNguyen-05/Harbe-FE)
 - The database I choose for this project is MySQL and Redis for cart service.
 - You can see the report [here](https://drive.google.com/file/d/1FtmhXKs8Z4rKs--6F-V3U9HTLlpZFCcx/view?usp=sharing)
 - The order of running the services is: Service Registry -> Config Server -> Auth Service -> Gateway Service, after running in this order, the remaining services can run in any order.
+- Run the docker compose: docker-compose -f docker-compose.infra.yml up
 
 <div align="center">
   <img src="app-resources/Picture17.png", alt="Application Architecture" />
