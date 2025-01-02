@@ -20,6 +20,7 @@
         <module>notification-service</module>
         <module>inventory-service</module>
         <module>product-javaEE-service</module>
+        <module>order-service-JavaEE</module>
     </modules>
 
     <properties>
