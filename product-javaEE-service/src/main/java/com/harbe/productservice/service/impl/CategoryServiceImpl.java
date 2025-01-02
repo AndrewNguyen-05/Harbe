@@ -11,6 +11,7 @@ import com.harbe.productservice.exception.ResourceNotFoundException;
 import com.harbe.productservice.repository.CategoryRepository;
 import com.harbe.productservice.service.CategoryService;
 import com.harbe.productservice.utils.SlugConvert;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
